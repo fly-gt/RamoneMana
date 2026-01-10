@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a9a09b6be0689c4a8f47e80f55772d7, type: 3}
+  m_Name: GameSettings
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  successColor: {r: 0, g: 0, b: 0, a: 0}
+  loseColor: {r: 0, g: 0, b: 0, a: 0}
+  green: {fileID: 2100000, guid: 7536884bb08662b41a8760ce56e52f1c, type: 2}
+  red: {fileID: 2100000, guid: 0aa9787931db7b74fb29fe6c89bdcae0, type: 2}
+  blue: {fileID: 2100000, guid: 5bd55c0ad0dfd3048b856fa56494a546, type: 2}
+  greenArrow: {fileID: 2100000, guid: 16d339a961b973e40a41d2144f2ae7d3, type: 2}
+  redArrow: {fileID: 2100000, guid: f4295b65ac74b64429f85859fa0d1eb1, type: 2}
+  blueArrow: {fileID: 2100000, guid: c740e9280ad19f04b8d67ff4dd54d55a, type: 2}
