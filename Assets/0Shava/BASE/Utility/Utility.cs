@@ -69,7 +69,7 @@ public static partial class Utility {
 
         return (T)values.GetValue(random);
     }
-
+    #region SET VECTOR
     public static Vector3 SetX(this Vector3 vector, float x) {
         var v = vector;
         v.x = x;
@@ -87,6 +87,21 @@ public static partial class Utility {
         v.z = z;
         return v;
     }
+    #endregion
+
+    #region SET TRANSFORM POSITION
+    public static void SetX(this Transform t, float x) {
+        t.position = t.position.SetX(x);
+    }
+
+    public static void SetY(this Transform t, float y) {
+        t.position = t.position.SetY(y);
+    }
+
+    public static void SetZ(this Transform t, float z) {
+        t.position = t.position.SetZ(z);
+    }
+    #endregion
 
     public static Color SetAlpha(this Color color, float a) {
         var c = color;

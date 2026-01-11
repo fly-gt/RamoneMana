@@ -2,11 +2,11 @@
 using UnityEngine;
 
 public class GameEntry : SceneEntryBase {
-    //public GameController gameController;
+    public GameController gameController;
 
     public override async UniTask Initialize() {
         await base.Initialize();
-        ScreenManager.Instance.Set<MenuScreen>();
+        gameController.ToMenu();
         //gameController.Initialize();
     }
 

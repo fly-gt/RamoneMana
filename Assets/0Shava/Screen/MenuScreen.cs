@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class MenuScreen : ScreenBase {
     public void StartClick() {
-        ScreenManager.Instance.Set<GameScreen>();
+        GameController.Instance.ToGameplay();
+        //ScreenManager.Instance.Set<GameScreen>();
     }
 }

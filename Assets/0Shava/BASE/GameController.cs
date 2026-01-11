@@ -1,8 +1,46 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 //using YG;
 
 public class GameController : Singletone<GameController> {
+    public AssetReference enviromentPrefab;
+    public AssetReference boardPrefab;
+
+    public GameObject enviroment;
+    public GameObject board;
+
+    public void ToMenu() {
+        if (enviroment) {
+            Addressables.Release(enviroment);
+            Addressables.Release(board);
+            enviroment = null;
+            board = null;
+        }
+
+        ScreenManager.Instance.Set<MenuScreen>();
+    }
+
+    public async Task ToGameplay() {
+        ScreenManager.Instance.Set<GameScreen>();
+
+        var enviromentTask = UtilityAdressables.InitializeObject<Transform>(enviromentPrefab);
+        var boardTask = UtilityAdressables.InitializeObject<Transform>(boardPrefab);
+
+        enviroment = (await enviromentTask).gameObject;
+        board = (await boardTask).gameObject;
+
+        enviroment.transform.SetZ(2);
+        board.transform.SetZ(1);
+
+        Vector2 size = UtilityCamera.CameraWorldSize(Camera.main);
+        var spriteSize = enviroment.GetComponent<EnviromentSize>().GetSpriteSize();
+        var x = size.x / spriteSize.x;
+        var y = size.y / spriteSize.y;
+
+        enviroment.transform.localScale = new Vector3(x, y, 1f);
+        board.transform.localScale = new Vector3(x, x, 1f);
+    }
     //public bool IsPlaying;
     //public CastleController castle;
     //public PlayerController player;
