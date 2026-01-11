@@ -5,4 +5,12 @@ public class MenuScreen : ScreenBase {
         GameController.Instance.ToGameplay();
         //ScreenManager.Instance.Set<GameScreen>();
     }
+
+    public void LeaderboardClick() {
+
+    }
+
+    public void SettingsClick() {
+
+    }
 }

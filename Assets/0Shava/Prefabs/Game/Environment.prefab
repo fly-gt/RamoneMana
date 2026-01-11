@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7688249483499529447}
-  - component: {fileID: 3291216598945462043}
+  - component: {fileID: 6564157009854216181}
   m_Layer: 0
   m_Name: Environment
   m_TagString: Untagged
@@ -35,7 +35,7 @@ Transform:
   - {fileID: 842012602966537528}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3291216598945462043
+--- !u!114 &6564157009854216181
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,13 +44,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 196919460317333717}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8d03203f17525645bc74ec9d441ee5e, type: 3}
+  m_Script: {fileID: 11500000, guid: 505e2a5b8a62f5d4d863309ab385614d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnviromentSize
-  gameCamera: {fileID: 0}
-  spriteRenderer: {fileID: 7216383625710266483}
-  enviroment: {fileID: 7688249483499529447}
-  board: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::EnviromentController
+  nightSprite: {fileID: 7216383625710266483}
+  grassSprite: {fileID: 8841070319695863435}
+  treesSprite: {fileID: 3557096032277609467}
+  moveDuration: 0.5
 --- !u!1 &1062205166625051098
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,7 +168,7 @@ Transform:
   m_GameObject: {fileID: 6352362151571857383}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.155, z: 0}
+  m_LocalPosition: {x: 0, y: -3.1408, z: 0}
   m_LocalScale: {x: 1.0000001, y: 1.0008633, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -228,7 +228,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 10.33, y: 14.055424}
+  m_Size: {x: 10.33, y: 16.0254}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

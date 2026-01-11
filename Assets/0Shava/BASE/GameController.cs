@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 //using YG;
@@ -6,16 +7,30 @@ using UnityEngine.AddressableAssets;
 public class GameController : Singletone<GameController> {
     public AssetReference enviromentPrefab;
     public AssetReference boardPrefab;
+    [Space]
+    public EnviromentController enviroment;
+    public BoardController board;
 
-    public GameObject enviroment;
-    public GameObject board;
+    public async void Initialize() {
+        enviroment = await UtilityAdressables.InitializeObject<EnviromentController>(enviromentPrefab);
+        Vector2 size = GetSizeByCamera();
+        enviroment.transform.SetZ(2);
+        enviroment.transform.localScale = new Vector3(size.x, size.y, 1f);
 
-    public void ToMenu() {
-        if (enviroment) {
-            Addressables.Release(enviroment);
-            Addressables.Release(board);
-            enviroment = null;
-            board = null;
+        board = await UtilityAdressables.InitializeObject<BoardController>(boardPrefab);
+        board.transform.SetZ(1);
+        board.transform.localScale = new Vector3(size.x, size.x, 1f);
+
+        ToMenu(true);
+    }
+
+    public async void ToMenu(bool first = false) {
+        enviroment.ToMenu(first);
+
+        if (!first) {
+            await board.Hide();
+            //Addressables.Release(board.gameObject);
+            //board = null;
         }
 
         ScreenManager.Instance.Set<MenuScreen>();
@@ -23,23 +38,18 @@ public class GameController : Singletone<GameController> {
 
     public async Task ToGameplay() {
         ScreenManager.Instance.Set<GameScreen>();
+        board.Show();
+        enviroment.ToGame();
 
-        var enviromentTask = UtilityAdressables.InitializeObject<Transform>(enviromentPrefab);
-        var boardTask = UtilityAdressables.InitializeObject<Transform>(boardPrefab);
+    }
 
-        enviroment = (await enviromentTask).gameObject;
-        board = (await boardTask).gameObject;
-
-        enviroment.transform.SetZ(2);
-        board.transform.SetZ(1);
-
+    private Vector2 GetSizeByCamera() {
         Vector2 size = UtilityCamera.CameraWorldSize(Camera.main);
-        var spriteSize = enviroment.GetComponent<EnviromentSize>().GetSpriteSize();
+        var spriteSize = enviroment.GetComponent<EnviromentController>().GetSpriteSize();
         var x = size.x / spriteSize.x;
         var y = size.y / spriteSize.y;
 
-        enviroment.transform.localScale = new Vector3(x, y, 1f);
-        board.transform.localScale = new Vector3(x, x, 1f);
+        return new Vector2(x, y);
     }
     //public bool IsPlaying;
     //public CastleController castle;

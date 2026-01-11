@@ -6,7 +6,7 @@ public class GameEntry : SceneEntryBase {
 
     public override async UniTask Initialize() {
         await base.Initialize();
-        gameController.ToMenu();
+        gameController.Initialize();
         //gameController.Initialize();
     }
 
