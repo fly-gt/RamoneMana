@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cysharp.Threading.Tasks;
+using System;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -11,15 +12,13 @@ public class GameController : Singletone<GameController> {
     public EnviromentController enviroment;
     public BoardController board;
 
-    public async void Initialize() {
+    public async UniTask Initialize() {
         enviroment = await UtilityAdressables.InitializeObject<EnviromentController>(enviromentPrefab);
         Vector2 size = GetSizeByCamera();
-        enviroment.transform.SetZ(2);
-        enviroment.transform.localScale = new Vector3(size.x, size.y, 1f);
+        enviroment.Initialize(size);
 
         board = await UtilityAdressables.InitializeObject<BoardController>(boardPrefab);
-        board.transform.SetZ(1);
-        board.transform.localScale = new Vector3(size.x, size.x, 1f);
+        await board.Initialize(size);
 
         ToMenu(true);
     }

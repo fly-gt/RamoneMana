@@ -1,5 +1,7 @@
 using DG.Tweening;
 using NaughtyAttributes;
+using System;
+using System.Drawing;
 using UnityEngine;
 
 public class EnviromentController : MonoBehaviour {
@@ -7,6 +9,12 @@ public class EnviromentController : MonoBehaviour {
     public SpriteRenderer grassSprite;
     public SpriteRenderer treesSprite;
     public float moveDuration = 0.5f;
+    public float hideDuration = 0.2f;
+
+    public void Initialize(Vector2 sizeCamera) {
+        transform.SetZ(2);
+        transform.localScale = new Vector3(sizeCamera.x, sizeCamera.y, 1f);
+    }
 
     public void ToMenu(bool first = false) {
         var offsetPos = grassSprite.transform.localPosition.y - 15;
@@ -17,7 +25,7 @@ public class EnviromentController : MonoBehaviour {
             return;
         }
 
-        grassSprite.transform.DOLocalMoveY(offsetPos, moveDuration).SetEase(Ease.InOutBack);
+        grassSprite.transform.DOLocalMoveY(offsetPos, hideDuration);
     }
 
     public void ToGame() {

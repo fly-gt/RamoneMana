@@ -1,20 +1,56 @@
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BoardController : MonoBehaviour {
-    public SpriteRenderer boardSprite;
+    public SpriteRenderer numbersFieldSprite;
+    public ObjectPool pool;
+    public int fieldSize = 5;
     public float moveDuration = 0.5f;
+    public float hideDuration = 0.2f;
+    public List<GameObject> numbers = new();
 
     private void Awake() {
         transform.SetY(transform.position.y - 15f);
     }
 
-    public void Show() {
-        transform.DOLocalMoveY(transform.position.y + 15f, moveDuration).SetEase(Ease.OutBack, 0.5f);
+    public async UniTask Initialize(Vector2 sizeCamera) {
+        transform.SetZ(1);
+        transform.localScale = new Vector3(sizeCamera.x, sizeCamera.x, 1f);
+    }
+
+    public async UniTask Show() {
+        Vector3 numberFieldSize = numbersFieldSprite.size;
+        Vector2 itemSize = numberFieldSize / fieldSize;
+        Vector3 pivotPosition = new(-numberFieldSize.x / 2, numberFieldSize.y / 2, 0);
+
+        if (numbers.Count == 0) {
+            for (int y = 0; y < fieldSize; y++) {
+                for (int x = 0; x < fieldSize; x++) {
+                    float nX = pivotPosition.x + x * itemSize.x + itemSize.x / 2;
+                    float nY = pivotPosition.y - y * itemSize.y - itemSize.y / 2;
+
+                    GameObject go = await pool.Get();
+                    Number number = go.GetComponent<Number>();
+                    number.SetSize(itemSize.x, itemSize.y);
+                    number.SetPosition(pivotPosition.SetX(nX).SetY(nY));
+
+                    numbers.Add(go);
+                }
+            }
+        }
+
+        await transform.DOLocalMoveY(transform.position.y + 15f, moveDuration).SetEase(Ease.OutBack, 0.5f);
     }
 
     public async UniTask Hide() {
-        await transform.DOLocalMoveY(transform.position.y - 15f, moveDuration).SetEase(Ease.InOutBack);
+        await transform.DOLocalMoveY(transform.position.y - 15f, hideDuration);
+
+        foreach (var n in numbers) {
+            pool.Return(n);
+        }
+
+        numbers.Clear();
     }
 }
