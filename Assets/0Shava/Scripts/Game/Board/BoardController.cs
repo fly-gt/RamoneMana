@@ -32,8 +32,8 @@ public class BoardController : MonoBehaviour {
                     float nY = pivotPosition.y - y * itemSize.y - itemSize.y / 2;
 
                     GameObject go = await pool.Get();
-                    Number number = go.GetComponent<Number>();
-                    number.SetSize(itemSize.x, itemSize.y);
+                    NumberController number = go.GetComponent<NumberController>();
+                    number.Setup(itemSize.x, itemSize.y);
                     number.SetPosition(pivotPosition.SetX(nX).SetY(nY));
 
                     numbers.Add(go);

@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -4636115958458729934, guid: 55b1b7c646982a049b43cadc6fe191fa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7d48803b47fc8374d9d9d1bf9e3ca25c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -102,8 +102,9 @@ GameObject:
   - component: {fileID: 4001411713950314851}
   - component: {fileID: 7766924837938844276}
   - component: {fileID: 5784574837010448730}
-  - component: {fileID: 1721024098907814388}
-  m_Layer: 0
+  - component: {fileID: 4701526553783033752}
+  - component: {fileID: 5775757212443230014}
+  m_Layer: 6
   m_Name: Number
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,8 +176,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 4211293783942383924, guid: a64f98d7a00501442ae40845562f1c20, type: 3}
-  m_Color: {r: 0.84955823, g: 1, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 7d48803b47fc8374d9d9d1bf9e3ca25c, type: 3}
+  m_Color: {r: 0.8773585, g: 0.8773585, b: 0.8773585, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
@@ -206,7 +207,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 2, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1721024098907814388
+--- !u!114 &4701526553783033752
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -215,8 +216,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 4122515222959261455}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec2152452e3c47543b3a31226401f018, type: 3}
+  m_Script: {fileID: 11500000, guid: dceffc12d0197f14aba1ac096850fb74, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Number
+  m_EditorClassIdentifier: Assembly-CSharp::NumberController
+  data:
+    Number: 0
+  view: {fileID: 5775757212443230014}
+--- !u!114 &5775757212443230014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4122515222959261455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc95385a72bce6948aa7ef7b1ff68db6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NumberView
   numberSprite: {fileID: 7766924837938844276}
   boxCollider: {fileID: 5784574837010448730}

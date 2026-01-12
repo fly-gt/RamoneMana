@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9e170def4f989a418b852548011f950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AppShared
-  AppInited: 0
+  settings: {fileID: 11400000, guid: 83d0ace7b1b8f47439a001c198109b73, type: 2}
 --- !u!114 &9121019940770825639
 MonoBehaviour:
   m_ObjectHideFlags: 0

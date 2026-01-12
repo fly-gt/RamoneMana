@@ -12,12 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a9a09b6be0689c4a8f47e80f55772d7, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  successColor: {r: 0, g: 0, b: 0, a: 0}
-  loseColor: {r: 0, g: 0, b: 0, a: 0}
-  green: {fileID: 2100000, guid: 7536884bb08662b41a8760ce56e52f1c, type: 2}
-  red: {fileID: 2100000, guid: 0aa9787931db7b74fb29fe6c89bdcae0, type: 2}
-  blue: {fileID: 2100000, guid: 5bd55c0ad0dfd3048b856fa56494a546, type: 2}
-  greenArrow: {fileID: 2100000, guid: 16d339a961b973e40a41d2144f2ae7d3, type: 2}
-  redArrow: {fileID: 2100000, guid: f4295b65ac74b64429f85859fa0d1eb1, type: 2}
-  blueArrow: {fileID: 2100000, guid: c740e9280ad19f04b8d67ff4dd54d55a, type: 2}
+  numberData:
+  - Value: 1
+    Sprite: {fileID: 21300000, guid: 6ee27cdf2a8e9184b95e00c544aedc22, type: 3}
+  - Value: 2
+    Sprite: {fileID: 21300000, guid: 97916bf13235aea4aa433fce8f73d17e, type: 3}
+  - Value: 3
+    Sprite: {fileID: 21300000, guid: 7e6ba6b4f5b67fa44bcc9e181bbf006e, type: 3}
+  - Value: 4
+    Sprite: {fileID: 21300000, guid: 0f997114ca5e21c4db5f85b168153cb1, type: 3}
+  - Value: 5
+    Sprite: {fileID: 21300000, guid: c39881977041a1146b839c25295eb9ff, type: 3}
+  - Value: 6
+    Sprite: {fileID: 21300000, guid: 2695d4b1b53417d43b96f3d1af66b591, type: 3}
+  - Value: 7
+    Sprite: {fileID: 21300000, guid: 2b687fc98b3217747a2d8a9b88626ca4, type: 3}
+  - Value: 8
+    Sprite: {fileID: 21300000, guid: 3483e83526db16a428f76648929a9713, type: 3}
+  - Value: 9
+    Sprite: {fileID: 21300000, guid: cc5c526bf4f864c48b2de3f7063bda8e, type: 3}

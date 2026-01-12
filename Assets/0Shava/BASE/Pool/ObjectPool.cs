@@ -11,8 +11,6 @@ public class ObjectPool : MonoBehaviour {
     public LinkedList<GameObject> pool = new();
 
     private void Awake() {
-        Debug.Log("2");
-
         for (int i = 0; i < initSize; i++) {
             CreateObject();
         }
