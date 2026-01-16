@@ -6,10 +6,8 @@ using UnityEngine;
 public class NumberController : MonoBehaviour, IClickable {
     public NumberData data;
     public NumberView view;
-    [Space]
-    public float clickedHoldTime = 3f;
-    public float timer;
-    public bool clickedHold;
+    public bool clicked;
+    public int Number => data.Number;
 
     private void Awake() {
         data = new();
@@ -21,16 +19,6 @@ public class NumberController : MonoBehaviour, IClickable {
         data.ChangeNumber -= OnChangeNumber;
     }
 
-    private void Update() {
-        if (Time.time > timer) {
-            if (clickedHold) {
-                clickedHold = false;
-                transform.DOScale(Vector3.one, 0.2f);
-                Debug.Log("unhold");
-            }
-        }
-    }
-
     public void Setup(float x, float y) {
         data.SetNumber(UnityEngine.Random.Range(1, 10));
         view.SetSize(x, y);
@@ -40,15 +28,21 @@ public class NumberController : MonoBehaviour, IClickable {
         transform.localPosition = pos;
     }
 
+    public void UnClick() {
+        clicked = false;
+        transform.DOScale(Vector3.one, 0.1f);
+    }
+
     public void OnClick() {
-        if (clickedHold) {
+        if (clicked) {
             return;
         }
 
-        clickedHold = true;
-        timer = Time.time + clickedHoldTime;
+        //Debug.Log($"Click: {data.Number}");
+        clicked = true;
         transform.DOScale(Vector3.one * 0.85f, 0.2f);
-        Debug.Log($"Click: {data.Number}");
+        GameController.Instance.clickNumberFlow.ClickNumber(this);
+        //GameController.Instance.board.ClickNumber(this);
     }
 
     public void OnChangeNumber(int n) {

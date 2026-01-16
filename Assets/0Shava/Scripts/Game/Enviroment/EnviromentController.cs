@@ -1,7 +1,5 @@
 using DG.Tweening;
 using NaughtyAttributes;
-using System;
-using System.Drawing;
 using UnityEngine;
 
 public class EnviromentController : MonoBehaviour {
@@ -48,5 +46,6 @@ public class EnviromentController : MonoBehaviour {
 
         transform.localScale = new Vector3(x, y, 1f);
         FindFirstObjectByType<BoardController>().transform.localScale = new Vector3(x, x, 1f);
+        FindFirstObjectByType<ProgressController>().transform.localScale = new Vector3(x, x, 1f);
     }
 }

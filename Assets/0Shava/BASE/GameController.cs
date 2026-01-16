@@ -1,16 +1,31 @@
 ﻿using Cysharp.Threading.Tasks;
-using System;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 //using YG;
 
+public enum GameStateType {
+    Menu,
+    Game,
+    Pause
+}
+
 public class GameController : Singletone<GameController> {
     public AssetReference enviromentPrefab;
     public AssetReference boardPrefab;
+    public AssetReference progressPrefab;
     [Space]
     public EnviromentController enviroment;
     public BoardController board;
+    public ProgressController progress;
+    [Space]
+    public ClickNumberFlow clickNumberFlow;
+    [Space]
+    public GameStateType State;
+
+    private void OnDestroy() {
+        clickNumberFlow?.Clear();
+    }
 
     public async UniTask Initialize() {
         enviroment = await UtilityAdressables.InitializeObject<EnviromentController>(enviromentPrefab);
@@ -20,11 +35,18 @@ public class GameController : Singletone<GameController> {
         board = await UtilityAdressables.InitializeObject<BoardController>(boardPrefab);
         await board.Initialize(size);
 
+        progress = await UtilityAdressables.InitializeObject<ProgressController>(progressPrefab);
+        progress.Initialize(size);
+
         ToMenu(true);
+
+        clickNumberFlow = new(progress, board);
     }
 
     public async void ToMenu(bool first = false) {
+        State = GameStateType.Menu;
         enviroment.ToMenu(first);
+        progress.HideVisual();
 
         if (!first) {
             await board.Hide();
@@ -35,11 +57,17 @@ public class GameController : Singletone<GameController> {
         ScreenManager.Instance.Set<MenuScreen>();
     }
 
+    public void ToPause() {
+        State = GameStateType.Pause;
+        PopupManager.Instance.Render<PausePopup>();
+    }
+
     public async Task ToGameplay() {
+        State = GameStateType.Game;
         ScreenManager.Instance.Set<GameScreen>();
         board.Show();
         enviroment.ToGame();
-
+        progress.Generate();
     }
 
     private Vector2 GetSizeByCamera() {
@@ -50,6 +78,7 @@ public class GameController : Singletone<GameController> {
 
         return new Vector2(x, y);
     }
+    #region old
     //public bool IsPlaying;
     //public CastleController castle;
     //public PlayerController player;
@@ -241,4 +270,6 @@ public class GameController : Singletone<GameController> {
     //public void Clear() {
     //    PopupManager.Instance.CloseAll();
     //}
+
+    #endregion
 }

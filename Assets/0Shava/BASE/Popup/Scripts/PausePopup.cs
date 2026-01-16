@@ -8,6 +8,7 @@ public class PausePopup : BasePopup {
     }
 
     public void ContinueClick() {
+        GameController.Instance.State = GameStateType.Game;
         PopupManager.Instance.CloseAll();
     }
 }

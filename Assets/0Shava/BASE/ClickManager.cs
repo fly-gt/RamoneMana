@@ -1,9 +1,15 @@
 using UnityEngine;
 
-public class ClickManager : MonoBehaviour {
+public class ClickManager : Singletone<ClickManager> {
     [SerializeField] private LayerMask clickableLayer;
+    public bool blocked;
+
 
     void Update() {
+        if (blocked || GameController.Instance.State != GameStateType.Game) {
+            return;
+        }
+
         // Мобильные
         if (Input.touchCount > 0) {
             Touch touch = Input.GetTouch(0);

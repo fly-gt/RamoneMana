@@ -31,3 +31,24 @@ MonoBehaviour:
     Sprite: {fileID: 21300000, guid: 3483e83526db16a428f76648929a9713, type: 3}
   - Value: 9
     Sprite: {fileID: 21300000, guid: cc5c526bf4f864c48b2de3f7063bda8e, type: 3}
+  progressNumberData:
+  - Value: 0
+    Sprite: {fileID: 431763357707232021, guid: 232ef8adad6faa54ab5f3eb333f2d5e9, type: 3}
+  - Value: 1
+    Sprite: {fileID: -4494906271412781228, guid: 232ef8adad6faa54ab5f3eb333f2d5e9, type: 3}
+  - Value: 2
+    Sprite: {fileID: 3921956752091283984, guid: 232ef8adad6faa54ab5f3eb333f2d5e9, type: 3}
+  - Value: 3
+    Sprite: {fileID: 976971190618784626, guid: 232ef8adad6faa54ab5f3eb333f2d5e9, type: 3}
+  - Value: 4
+    Sprite: {fileID: 6197256980428483003, guid: 232ef8adad6faa54ab5f3eb333f2d5e9, type: 3}
+  - Value: 5
+    Sprite: {fileID: 3994131154316130641, guid: 232ef8adad6faa54ab5f3eb333f2d5e9, type: 3}
+  - Value: 6
+    Sprite: {fileID: -6509629369115331091, guid: 232ef8adad6faa54ab5f3eb333f2d5e9, type: 3}
+  - Value: 7
+    Sprite: {fileID: -7061131407685632084, guid: 232ef8adad6faa54ab5f3eb333f2d5e9, type: 3}
+  - Value: 8
+    Sprite: {fileID: 154023612881260959, guid: 232ef8adad6faa54ab5f3eb333f2d5e9, type: 3}
+  - Value: 9
+    Sprite: {fileID: 663690340598665937, guid: 232ef8adad6faa54ab5f3eb333f2d5e9, type: 3}

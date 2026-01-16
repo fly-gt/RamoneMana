@@ -681,8 +681,15 @@ MonoBehaviour:
     m_SubObjectType: 
     m_SubObjectGUID: 
     m_EditorAssetChanged: 0
+  progressPrefab:
+    m_AssetGUID: 9304bd5766aea7c4f87cc1532181aa18
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   enviroment: {fileID: 0}
   board: {fileID: 0}
+  progress: {fileID: 0}
 --- !u!114 &1914892902
 MonoBehaviour:
   m_ObjectHideFlags: 0

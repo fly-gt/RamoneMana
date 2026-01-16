@@ -222,6 +222,7 @@ MonoBehaviour:
   data:
     Number: 0
   view: {fileID: 5775757212443230014}
+  clicked: 0
 --- !u!114 &5775757212443230014
 MonoBehaviour:
   m_ObjectHideFlags: 0
