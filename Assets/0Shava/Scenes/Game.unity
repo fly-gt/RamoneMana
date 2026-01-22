@@ -687,9 +687,16 @@ MonoBehaviour:
     m_SubObjectType: 
     m_SubObjectGUID: 
     m_EditorAssetChanged: 0
+  boardLinePrefab:
+    m_AssetGUID: f5150156b008767439d8ff60d445d379
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   enviroment: {fileID: 0}
   board: {fileID: 0}
   progress: {fileID: 0}
+  boardLine: {fileID: 0}
   State: 0
 --- !u!114 &1914892902
 MonoBehaviour:

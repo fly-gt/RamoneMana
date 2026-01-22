@@ -14,23 +14,11 @@ public class ProgressController : MonoBehaviour {
 
         data.ChangeTarget += OnChangeTarget;
         data.ChangeProgress += OnChangeProgress;
-        data.Failed += OnFailed;
-        data.Success += OnSuccess;
     }
 
     private void OnDestroy() {
         data.ChangeTarget -= OnChangeTarget;
         data.ChangeProgress -= OnChangeProgress;
-        data.Failed -= OnFailed;
-        data.Success -= OnSuccess;
-    }
-
-    public void AddProgress(int value) {
-        data.AddProgress(value);
-    }
-
-    public void ClearProgress() {
-        data.ClearProgress();
     }
 
     public void Initialize(Vector2 sizeCamera) {
@@ -42,8 +30,24 @@ public class ProgressController : MonoBehaviour {
         data.Generate();
     }
 
+    public void AddProgress(int value) {
+        data.AddProgress(value);
+    }
+
+    public void ClearProgress() {
+        data.ClearProgress();
+    }
+
     public void HideVisual() {
         view.Hide();
+    }
+
+    public void CheckProgress() {
+        if (data.Progress == data.Target) {
+            Success?.Invoke();
+        } else if (data.Progress > data.Target) {
+            Failed?.Invoke();
+        }
     }
 
     private void OnChangeTarget(int target) {
@@ -52,14 +56,6 @@ public class ProgressController : MonoBehaviour {
 
     private void OnChangeProgress(int progress) {
         view.SetProgress(progress);
-    }
-
-    private void OnFailed() {
-        Failed?.Invoke();
-    }
-
-    private void OnSuccess() {
-        Success?.Invoke();
     }
 }
 
@@ -70,18 +66,9 @@ public class ProgressData {
 
     public event Action<int> ChangeTarget;
     public event Action<int> ChangeProgress;
-    public event Action Failed;
-    public event Action Success;
 
     public void AddProgress(int value) {
         Progress += value;
-
-        if (Progress == Target) {
-            Success?.Invoke();
-        } else if (Progress > Target) {
-            Failed?.Invoke();
-        }
-
         ChangeProgress?.Invoke(Progress);
     }
 

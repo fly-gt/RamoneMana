@@ -60,6 +60,10 @@ public class BoardController : MonoBehaviour {
 
         unClickHandler.Click();
         clickedNumbers.Add(nc);
+
+        if (clickedNumbers.Count > 1) {
+            GameController.Instance.boardLine.DrawLine(clickedNumbers[^2].transform.position, clickedNumbers[^1].transform.position);
+        }
         //GameController.Instance.clickNumberFlow.ClickNumber(nc);
 
         return true;
@@ -80,7 +84,7 @@ public class BoardController : MonoBehaviour {
                     GameObject go = await pool.Get();
                     NumberController number = go.GetComponent<NumberController>();
                     number.Setup(itemSize.x, itemSize.y, index, fieldSize, fieldSize);
-                    number.SetPosition(pivotPosition.SetX(nX).SetY(nY));
+                    number.SetPosition(pivotPosition.SetVectorX(nX).SetVectorY(nY));
 
                     numbers.Add(number);
                 }

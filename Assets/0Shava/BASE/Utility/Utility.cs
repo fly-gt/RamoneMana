@@ -69,20 +69,21 @@ public static partial class Utility {
 
         return (T)values.GetValue(random);
     }
+
     #region SET VECTOR
-    public static Vector3 SetX(this Vector3 vector, float x) {
+    public static Vector3 SetVectorX(this Vector3 vector, float x) {
         var v = vector;
         v.x = x;
         return v;
     }
 
-    public static Vector3 SetY(this Vector3 vector, float y) {
+    public static Vector3 SetVectorY(this Vector3 vector, float y) {
         var v = vector;
         v.y = y;
         return v;
     }
 
-    public static Vector3 SetZ(this Vector3 vector, float z) {
+    public static Vector3 SetVectorZ(this Vector3 vector, float z) {
         var v = vector;
         v.z = z;
         return v;
@@ -91,15 +92,15 @@ public static partial class Utility {
 
     #region SET TRANSFORM POSITION
     public static void SetX(this Transform t, float x) {
-        t.position = t.position.SetX(x);
+        t.position = t.position.SetVectorX(x);
     }
 
     public static void SetY(this Transform t, float y) {
-        t.position = t.position.SetY(y);
+        t.position = t.position.SetVectorY(y);
     }
 
     public static void SetZ(this Transform t, float z) {
-        t.position = t.position.SetZ(z);
+        t.position = t.position.SetVectorZ(z);
     }
     #endregion
 

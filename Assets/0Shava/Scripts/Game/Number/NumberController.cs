@@ -58,7 +58,6 @@ public class NumberController : MonoBehaviour, IClickable {
 
         clicked = true;
         transform.DOScale(Vector3.one * 0.85f, 0.2f);
-        //GameController.Instance.board.ClickNumber(this);
 
         return true;
     }

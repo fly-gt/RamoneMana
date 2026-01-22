@@ -50,8 +50,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: be8a5d82c0594d1468539ebe849d060a
+    m_Address: Assets/0Shava/Prefabs/Game/Line.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ef19c19bb4e858d43a55bd267d017447
     m_Address: GameScreen
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f5150156b008767439d8ff60d445d379
+    m_Address: Assets/0Shava/Prefabs/Game/BoardLIne.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

@@ -4,10 +4,12 @@ using UnityEngine;
 public class ClickNumberFlow {
     public ProgressController progress;
     public BoardController board;
+    public BoardLine boardLine;
 
-    public ClickNumberFlow(ProgressController progress, BoardController board) {
+    public ClickNumberFlow(ProgressController progress, BoardController board, BoardLine boardLine) {
         this.progress = progress;
         this.board = board;
+        this.boardLine = boardLine;
 
         progress.Failed += OnFailed;
         progress.Success += OnSuccess;
@@ -22,12 +24,11 @@ public class ClickNumberFlow {
 
     public void ClickNumber(NumberController nc) {
         if (!board.TryClickNumber(nc)) {
-            //Debug.Log("ClickNumber flow false");
             return;
         }
 
-        //Debug.Log("ClickNumber flow true");
         progress.AddProgress(nc.Number);
+        progress.CheckProgress();
     }
 
     private async void OnFailed() {
@@ -35,7 +36,7 @@ public class ClickNumberFlow {
         Debug.Log("Failed");
         await ScreenManager.Instance.Get<GameScreen>().WrongEffect();
         await UniTask.Delay(200);
-        progress.ClearProgress();
+        //progress.ClearProgress();
         board.UnClickNumbers();
 
         ClickManager.Instance.blocked = false;
@@ -44,7 +45,7 @@ public class ClickNumberFlow {
     private async void OnSuccess() {
         ClickManager.Instance.blocked = true;
         Debug.Log("Success");
-        await UniTask.Delay(2000);
+        await UniTask.Delay(1000);
         progress.Generate();
         board.UnClickNumbers();
         ClickManager.Instance.blocked = false;
@@ -52,5 +53,6 @@ public class ClickNumberFlow {
 
     private void OnUnClick() {
         progress.ClearProgress();
+        BoardLine.Instance.Clear();
     }
 }

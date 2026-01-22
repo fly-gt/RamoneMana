@@ -1,5 +1,12 @@
 fileFormatVersion: 2
 guid: 32fb0e71e5c2dfc4f8f275025f792fc6
+AssetOrigin:
+  serializedVersion: 1
+  productId: 235559
+  packageName: Violet Themed UI
+  packageVersion: 1.2
+  assetPath: Assets/Violet Theme Ui/White Icons/White AddFriend.png
+  uploadId: 767621
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -46,9 +53,9 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 1
-    wrapV: 1
-    wrapW: 1
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -126,9 +133,9 @@ TextureImporter:
         y: 262
         width: 201
         height: 202
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      alignment: 9
+      pivot: {x: 0.49895626, y: 0.0014347794}
+      border: {x: 98, y: 98, z: 98, w: 98}
       customData: 
       outline: []
       physicsShape: []
@@ -149,7 +156,7 @@ TextureImporter:
         width: 190
         height: 192
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -171,7 +178,7 @@ TextureImporter:
         width: 357
         height: 179
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -188,7 +195,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 6482941d1e7184d4fa07eefb8d434de9
     internalID: 0
     vertices: []
     indices: 
@@ -206,10 +213,3 @@ TextureImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 235559
-  packageName: Violet Themed UI
-  packageVersion: 1.2
-  assetPath: Assets/Violet Theme Ui/White Icons/White AddFriend.png
-  uploadId: 767621

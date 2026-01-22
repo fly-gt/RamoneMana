@@ -14,10 +14,12 @@ public class GameController : Singletone<GameController> {
     public AssetReference enviromentPrefab;
     public AssetReference boardPrefab;
     public AssetReference progressPrefab;
+    public AssetReference boardLinePrefab;
     [Space]
     public EnviromentController enviroment;
     public BoardController board;
     public ProgressController progress;
+    public BoardLine boardLine;
     [Space]
     public ClickNumberFlow clickNumberFlow;
     [Space]
@@ -38,9 +40,11 @@ public class GameController : Singletone<GameController> {
         progress = await UtilityAdressables.InitializeObject<ProgressController>(progressPrefab);
         progress.Initialize(size);
 
+        boardLine = await UtilityAdressables.InitializeObject<BoardLine>(boardLinePrefab);
+
         ToMenu(true);
 
-        clickNumberFlow = new(progress, board);
+        clickNumberFlow = new(progress, board, boardLine);
     }
 
     public async void ToMenu(bool first = false) {
@@ -50,8 +54,6 @@ public class GameController : Singletone<GameController> {
 
         if (!first) {
             await board.Hide();
-            //Addressables.Release(board.gameObject);
-            //board = null;
         }
 
         ScreenManager.Instance.Set<MenuScreen>();

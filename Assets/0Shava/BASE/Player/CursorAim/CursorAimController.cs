@@ -19,7 +19,7 @@ public class CursorAimController : MonoBehaviour {
 
         if (view.GetPoints(out var screenPos, out var aimPoint)) {
             model.AimPoint = aimPoint;
-            model.Direction = (aimPoint - transform.position).SetY(0);
+            model.Direction = (aimPoint - transform.position).SetVectorY(0);
             view.SetAimPosition(screenPos);
             view.SetAimActive(true);
         } else {
