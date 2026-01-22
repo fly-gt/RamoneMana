@@ -690,6 +690,7 @@ MonoBehaviour:
   enviroment: {fileID: 0}
   board: {fileID: 0}
   progress: {fileID: 0}
+  State: 0
 --- !u!114 &1914892902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -705,6 +706,7 @@ MonoBehaviour:
   clickableLayer:
     serializedVersion: 2
     m_Bits: 64
+  blocked: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

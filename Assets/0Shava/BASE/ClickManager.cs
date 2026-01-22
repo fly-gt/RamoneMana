@@ -28,10 +28,13 @@ public class ClickManager : Singletone<ClickManager> {
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, 10, clickableLayer)) {
-            IClickable clickable = hit.collider.GetComponent<IClickable>();
+            NumberController clickable = hit.collider.GetComponent<NumberController>();
 
             if (clickable != null) {
-                clickable.OnClick();
+                GameController.Instance.clickNumberFlow.ClickNumber(clickable);
+
+                //GameController.Instance.board.ClickNumber(clickable);
+                //clickable.OnClick();
             }
         }
     }

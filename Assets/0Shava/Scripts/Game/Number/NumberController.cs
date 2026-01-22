@@ -1,5 +1,6 @@
 using DG.Tweening;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent (typeof(NumberView))]
@@ -8,6 +9,9 @@ public class NumberController : MonoBehaviour, IClickable {
     public NumberView view;
     public bool clicked;
     public int Number => data.Number;
+    public int Index => data.Index;
+    
+    public HashSet<int> neighboues = new();
 
     private void Awake() {
         data = new();
@@ -19,8 +23,10 @@ public class NumberController : MonoBehaviour, IClickable {
         data.ChangeNumber -= OnChangeNumber;
     }
 
-    public void Setup(float x, float y) {
+    public void Setup(float x, float y, int index, int sizeX, int sizeY) {
         data.SetNumber(UnityEngine.Random.Range(1, 10));
+        data.SetIndex(index);
+        BoardUtility.FillNeighbors(sizeX, sizeY, index, neighboues);
         view.SetSize(x, y);
     }
 
@@ -45,6 +51,18 @@ public class NumberController : MonoBehaviour, IClickable {
         //GameController.Instance.board.ClickNumber(this);
     }
 
+    public bool TryClick() {
+        if (clicked) {
+            return false;
+        }
+
+        clicked = true;
+        transform.DOScale(Vector3.one * 0.85f, 0.2f);
+        //GameController.Instance.board.ClickNumber(this);
+
+        return true;
+    }
+
     public void OnChangeNumber(int n) {
         view.SetSprite(AppShared.Instance.settings.numberData[data.Number - 1].Sprite);
     }
@@ -52,11 +70,16 @@ public class NumberController : MonoBehaviour, IClickable {
     [Serializable]
     public class NumberData {
         public int Number;
+        public int Index;
         public event Action<int> ChangeNumber;
 
         public void SetNumber(int n) {
             Number = n;
             ChangeNumber?.Invoke(Number);
+        }
+
+        public void SetIndex(int i) {
+            Index = i;
         }
     }
 }

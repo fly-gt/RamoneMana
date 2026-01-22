@@ -21,16 +21,23 @@ public class ClickNumberFlow {
     }
 
     public void ClickNumber(NumberController nc) {
-        board.ClickNumber(nc);
+        if (!board.TryClickNumber(nc)) {
+            //Debug.Log("ClickNumber flow false");
+            return;
+        }
+
+        //Debug.Log("ClickNumber flow true");
         progress.AddProgress(nc.Number);
     }
 
     private async void OnFailed() {
         ClickManager.Instance.blocked = true;
         Debug.Log("Failed");
-        await UniTask.Delay(2000);
+        await ScreenManager.Instance.Get<GameScreen>().WrongEffect();
+        await UniTask.Delay(200);
         progress.ClearProgress();
         board.UnClickNumbers();
+
         ClickManager.Instance.blocked = false;
     }
 

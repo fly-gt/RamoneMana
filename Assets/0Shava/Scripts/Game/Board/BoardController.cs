@@ -11,11 +11,10 @@ public class BoardController : MonoBehaviour {
     public float moveDuration = 0.5f;
     public float hideDuration = 0.2f;
     public List<NumberController> numbers = new();
+    public List<NumberController> clickedNumbers = new();
     public BoardUnClickHandler unClickHandler;
 
     public event Action UnClick;
-
-    //public int amount;
 
     private void Awake() {
         transform.SetY(transform.position.y - 15f);
@@ -32,20 +31,38 @@ public class BoardController : MonoBehaviour {
     }
 
     public void UnclickActive(bool active) {
-        unClickHandler.Active(active);
+        //unClickHandler.Active(active);
     }
 
     public void UnClickNumbers() {
-        //amount = 0;
         foreach (var n in numbers) {
             n.UnClick();
         }
+
+        clickedNumbers.Clear();
         UnClick?.Invoke();
     }
 
-    public void ClickNumber(NumberController nc) {
+    public bool TryClickNumber(NumberController nc) {
+        //Debug.Log("ClickNumber BOARD");
+
+        if (clickedNumbers.Count > 0 && !clickedNumbers[^1].neighboues.Contains(nc.Index)) {
+            Debug.Log("R 2");
+            return false;
+        }
+
+        if (!nc.TryClick()) {
+            Debug.Log("R 1");
+            return false;
+        }
+
+        //Debug.Log("ClickNumber BOARD 2");
+
         unClickHandler.Click();
-        //amount += nc.Number;
+        clickedNumbers.Add(nc);
+        //GameController.Instance.clickNumberFlow.ClickNumber(nc);
+
+        return true;
     }
 
     public async UniTask Show() {
@@ -58,10 +75,11 @@ public class BoardController : MonoBehaviour {
                 for (int x = 0; x < fieldSize; x++) {
                     float nX = pivotPosition.x + x * itemSize.x + itemSize.x / 2;
                     float nY = pivotPosition.y - y * itemSize.y - itemSize.y / 2;
+                    int index = x + y * fieldSize;
 
                     GameObject go = await pool.Get();
                     NumberController number = go.GetComponent<NumberController>();
-                    number.Setup(itemSize.x, itemSize.y);
+                    number.Setup(itemSize.x, itemSize.y, index, fieldSize, fieldSize);
                     number.SetPosition(pivotPosition.SetX(nX).SetY(nY));
 
                     numbers.Add(number);

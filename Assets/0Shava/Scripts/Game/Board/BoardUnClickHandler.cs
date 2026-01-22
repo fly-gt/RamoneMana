@@ -10,9 +10,9 @@ public class BoardUnClickHandler : MonoBehaviour {
     public event Action UnClick;
 
     private void Update() {
-        if (!active) {
-            return;
-        }
+        //if (!active) {
+        //    return;
+        //}
 
         if (Time.time > timer) {
             if (clickedHold) {
