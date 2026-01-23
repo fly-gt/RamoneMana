@@ -30,10 +30,6 @@ public class BoardController : MonoBehaviour {
         transform.localScale = new Vector3(sizeCamera.x, sizeCamera.x, 1f);
     }
 
-    public void UnclickActive(bool active) {
-        //unClickHandler.Active(active);
-    }
-
     public void UnClickNumbers() {
         foreach (var n in numbers) {
             n.UnClick();
@@ -44,19 +40,17 @@ public class BoardController : MonoBehaviour {
     }
 
     public bool TryClickNumber(NumberController nc) {
-        //Debug.Log("ClickNumber BOARD");
-
+        //проверяем соседей
         if (clickedNumbers.Count > 0 && !clickedNumbers[^1].neighboues.Contains(nc.Index)) {
             Debug.Log("R 2");
             return false;
         }
 
+        //првоерка на clicked
         if (!nc.TryClick()) {
             Debug.Log("R 1");
             return false;
         }
-
-        //Debug.Log("ClickNumber BOARD 2");
 
         unClickHandler.Click();
         clickedNumbers.Add(nc);
@@ -64,7 +58,6 @@ public class BoardController : MonoBehaviour {
         if (clickedNumbers.Count > 1) {
             GameController.Instance.boardLine.DrawLine(clickedNumbers[^2].transform.position, clickedNumbers[^1].transform.position);
         }
-        //GameController.Instance.clickNumberFlow.ClickNumber(nc);
 
         return true;
     }

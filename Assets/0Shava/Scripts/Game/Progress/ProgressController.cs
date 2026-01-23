@@ -5,8 +5,9 @@ using UnityEngine;
 public class ProgressController : MonoBehaviour {
     public ProgressData data;
     public ProgressView view;
-    public event Action Failed;
-    public event Action Success;
+
+    public int Target => data.Target;
+    public int Progress => data.Progress;
 
     private void Awake() {
         data = new();
@@ -40,14 +41,6 @@ public class ProgressController : MonoBehaviour {
 
     public void HideVisual() {
         view.Hide();
-    }
-
-    public void CheckProgress() {
-        if (data.Progress == data.Target) {
-            Success?.Invoke();
-        } else if (data.Progress > data.Target) {
-            Failed?.Invoke();
-        }
     }
 
     private void OnChangeTarget(int target) {

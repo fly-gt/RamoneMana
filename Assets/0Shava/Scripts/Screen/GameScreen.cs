@@ -1,9 +1,13 @@
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using TMPro;
 using UnityEngine.UI;
 
 public class GameScreen : ScreenBase {
     public Image wrongImage;
+    public TMP_Text scoreText;
+    public ScoreView scoreView;
+
     public void PauseClick() {
         GameController.Instance.ToPause();
     }
@@ -14,4 +18,6 @@ public class GameScreen : ScreenBase {
             await wrongImage.DOFade(0f, 0.2f).ToUniTask();
         }
     }
+
+
 }

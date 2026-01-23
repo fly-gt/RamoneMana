@@ -21,6 +21,8 @@ public class GameController : Singletone<GameController> {
     public ProgressController progress;
     public BoardLine boardLine;
     [Space]
+    public ScoreController score;
+    [Space]
     public ClickNumberFlow clickNumberFlow;
     [Space]
     public GameStateType State;
@@ -44,7 +46,8 @@ public class GameController : Singletone<GameController> {
 
         ToMenu(true);
 
-        clickNumberFlow = new(progress, board, boardLine);
+        clickNumberFlow = new(progress, board, score);
+        score.Setup();
     }
 
     public async void ToMenu(bool first = false) {
