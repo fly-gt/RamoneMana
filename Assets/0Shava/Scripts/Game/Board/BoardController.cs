@@ -7,7 +7,7 @@ using UnityEngine;
 public class BoardController : MonoBehaviour {
     public SpriteRenderer numbersFieldSprite;
     public ObjectPool pool;
-    public int fieldSize = 5;
+    public Vector2Int fieldSize;
     public float moveDuration = 0.5f;
     public float hideDuration = 0.2f;
     public List<NumberController> numbers = new();
@@ -70,20 +70,21 @@ public class BoardController : MonoBehaviour {
     }
 
     public async UniTask Show() {
-        Vector3 numberFieldSize = numbersFieldSprite.size;
-        Vector2 itemSize = numberFieldSize / fieldSize;
+        Vector2 numberFieldSize = numbersFieldSprite.size;
+        float itemSizeX = numberFieldSize.x / fieldSize.x;
+        Vector2 itemSize = new Vector2(itemSizeX, itemSizeX);
         Vector3 pivotPosition = new(-numberFieldSize.x / 2, numberFieldSize.y / 2, 0);
 
         if (numbers.Count == 0) {
-            for (int y = 0; y < fieldSize; y++) {
-                for (int x = 0; x < fieldSize; x++) {
+            for (int y = 0; y < fieldSize.y; y++) {
+                for (int x = 0; x < fieldSize.x; x++) {
                     float nX = pivotPosition.x + x * itemSize.x + itemSize.x / 2;
                     float nY = pivotPosition.y - y * itemSize.y - itemSize.y / 2;
-                    int index = x + y * fieldSize;
+                    int index = x + y * fieldSize.x;
 
                     GameObject go = await pool.Get();
                     NumberController number = go.GetComponent<NumberController>();
-                    number.Setup(itemSize.x, itemSize.y, index, fieldSize, fieldSize);
+                    number.Setup(itemSize.x, itemSize.y, index, fieldSize.x, fieldSize.y);
                     number.SetPosition(pivotPosition.SetVectorX(nX).SetVectorY(nY));
 
                     numbers.Add(number);

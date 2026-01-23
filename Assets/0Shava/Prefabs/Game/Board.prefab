@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0019361, y: 1.0019361, z: 1}
+  m_LocalScale: {x: 0.8665393, y: 0.8665393, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8343544337807271280}
@@ -50,12 +50,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BoardController
   numbersFieldSprite: {fileID: 7350130781580768730}
   pool: {fileID: 2993481993754299150}
-  fieldSize: 5
+  fieldSize: {x: 5, y: 6}
   moveDuration: 0.5
   hideDuration: 0.3
   numbers: []
+  clickedNumbers: []
   unClickHandler: {fileID: 20668333282844580}
-  amount: 0
 --- !u!114 &20668333282844580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,6 +71,7 @@ MonoBehaviour:
   clickedHoldTime: 3
   timer: 0
   clickedHold: 0
+  active: 0
 --- !u!1 &1520441074546775845
 GameObject:
   m_ObjectHideFlags: 0
@@ -82,7 +83,6 @@ GameObject:
   - component: {fileID: 4663232949943606962}
   - component: {fileID: 7350130781580768730}
   - component: {fileID: 2993481993754299150}
-  - component: {fileID: 4423311488922648462}
   m_Layer: 0
   m_Name: bg_Board (3)
   m_TagString: Untagged
@@ -99,7 +99,7 @@ Transform:
   m_GameObject: {fileID: 1520441074546775845}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0045, y: 0.07, z: 0}
+  m_LocalPosition: {x: 0, y: 0.074, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -159,31 +159,12 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 8.7200985, y: 8.753184}
+  m_Size: {x: 8.588588, y: 10.29}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
 --- !u!114 &2993481993754299150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1520441074546775845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f03e4074e6411d04da524a27e577a00c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ObjectPool
-  prefab:
-    m_AssetGUID: b1336fbfe4b2b4b48868bc3c5da207f0
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 0
-  initSize: 40
---- !u!114 &4423311488922648462
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -410,7 +391,7 @@ Transform:
   m_GameObject: {fileID: 2556370202201696408}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.1871, z: 0}
+  m_LocalPosition: {x: 0, y: -2.8001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -464,14 +445,14 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1060364453
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: d32607a13cab4804684543fbfe610dfb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 10, y: 10}
+  m_Size: {x: 9.85, y: 11.559752}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
