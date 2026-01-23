@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.ResourceLocations;
 
 public static partial class Utility {
     public static void QuickSort(RaycastHit[] array, int leftIndex, int rightIndex) {

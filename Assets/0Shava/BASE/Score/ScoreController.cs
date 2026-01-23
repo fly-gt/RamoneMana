@@ -3,7 +3,8 @@ using UnityEngine;
 public class ScoreController : MonoBehaviour {
     public ScoreModel model;
     public ScoreView view;
-    //public ScoreFlying flying;
+
+    public Vector3 ViewWorldPostion => view.transform.position;
 
     public int Score => model.Score;
 

@@ -43,7 +43,6 @@ public class ClickNumberFlow {
     public void Clear() {
         board.UnClick -= OnUnClick;
     }
-
 }
 
 public class FailureFacade {
@@ -79,11 +78,22 @@ public class SuccessFacade {
     public async void Success() {
         Debug.Log("Success");
         ClickManager.Instance.blocked = true;
+        await Fly();
         await UniTask.Delay(1000);
         progress.Generate();
         score.AddScore(board.clickedNumbers.Count * 10);
         board.UnClickNumbers();
         ClickManager.Instance.blocked = false;
+    }
+
+    private async UniTask Fly() {
+        var flyRect = ScoreFlying.Instance.GetComponent<RectTransform>();
+        var scoreRect = score.view.GetComponent<RectTransform>();
+
+        foreach (var n in board.clickedNumbers) {
+            ScoreFlying.Instance.Fly(n.transform.position, scoreRect.position);
+            await UniTask.Delay(100);
+        }
     }
 }
 

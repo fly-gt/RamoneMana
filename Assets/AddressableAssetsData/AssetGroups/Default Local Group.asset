@@ -35,6 +35,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7b0988e45989b2f4e83eceb20c94946b
+    m_Address: Assets/0Shava/Prefabs/Game/ScoreFly.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9304bd5766aea7c4f87cc1532181aa18
     m_Address: Progress
     m_ReadOnly: 0
