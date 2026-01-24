@@ -82,6 +82,7 @@ public class SuccessFacade {
         await UniTask.Delay(1000);
         progress.Generate();
         //score.AddScore(board.clickedNumbers.Count * 10);
+        board.ResetupClicked();
         board.UnClickNumbers();
         ClickManager.Instance.blocked = false;
     }

@@ -39,6 +39,16 @@ public class BoardController : MonoBehaviour {
         UnClick?.Invoke();
     }
 
+    public void ResetupClicked() {
+        foreach (var cn in clickedNumbers) {
+            cn.UnClick(doScale: false);
+            cn.LightSetup();
+        }
+
+        clickedNumbers.Clear();
+        UnClick?.Invoke();
+    }
+
     public bool TryClickNumber(NumberController nc) {
         //проверяем соседей
         if (clickedNumbers.Count > 0 && !clickedNumbers[^1].neighboues.Contains(nc.Index)) {

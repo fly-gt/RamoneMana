@@ -24,19 +24,28 @@ public class NumberController : MonoBehaviour, IClickable {
     }
 
     public void Setup(float x, float y, int index, int sizeX, int sizeY) {
-        data.SetNumber(UnityEngine.Random.Range(1, 10));
+        LightSetup();
         data.SetIndex(index);
         BoardUtility.FillNeighbors(sizeX, sizeY, index, neighboues);
         view.SetSize(x, y);
+    }
+
+    public void LightSetup() {
+        data.SetNumber(UnityEngine.Random.Range(1, 10));
     }
 
     public void SetPosition(Vector3 pos) {
         transform.localPosition = pos;
     }
 
-    public void UnClick() {
+    public void UnClick(bool doScale = true) {
         clicked = false;
-        transform.DOScale(Vector3.one, 0.1f);
+
+        if (doScale) {
+            transform.DOScale(Vector3.one, 0.1f);
+        } else {
+            transform.localScale = Vector3.one;
+        }
     }
 
     public void OnClick() {
