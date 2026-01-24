@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
 using UnityEngine;
 
 public class ProgressView : MonoBehaviour {
@@ -7,9 +7,14 @@ public class ProgressView : MonoBehaviour {
     [Space]
     public SpriteRenderer progress1;
     public SpriteRenderer progress2;
+    [Space]
+    public float ownPosY;
+    public float slidePosY = 6.5f;
+    public float slideDuration = 0.5f;
 
     private void Awake() {
-        Hide();
+        ownPosY = transform.position.y;
+        //Hide();
     }
 
     public void SetTarget(int value) {
@@ -18,6 +23,23 @@ public class ProgressView : MonoBehaviour {
 
     public void SetProgress(int value) {
         Set(value, progress1, progress2);
+    }
+
+    public void ToGame(bool game, bool force = false) {
+        if (game) {
+            if (force) {
+                transform.SetY(ownPosY);
+            } else {
+                transform.DOMoveY(ownPosY, slideDuration).SetEase(Ease.OutBack, 0.5f);
+            }
+            return;
+        }
+
+        if (force) {
+            transform.SetY(ownPosY + slidePosY);
+        } else {
+            transform.DOMoveY(ownPosY + slidePosY, slideDuration);
+        }
     }
 
     private void Set(int value, SpriteRenderer s1, SpriteRenderer s2) {

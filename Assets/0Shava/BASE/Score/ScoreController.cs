@@ -22,13 +22,12 @@ public class ScoreController : MonoBehaviour {
         model.SetScore(0);
     }
 
-    public void AddScore(int value) {
-        model.SetScore(model.Score + value);
+    public void AddScore(int score, bool pulse = false) {
+        model.SetScore(model.Score + score);
+        if (pulse) {
+            view.AddScoreVFX();
+        }
         //flying.Fly(pos + Vector3.up, view.ScoreFlyRect.transform.position);
-    }
-
-    public void SetActiveView(bool value) {
-        view.SetActive(value);
     }
 
     private void ChangeScore(int score) {

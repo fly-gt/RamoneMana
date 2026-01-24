@@ -81,7 +81,7 @@ public class SuccessFacade {
         await Fly();
         await UniTask.Delay(1000);
         progress.Generate();
-        score.AddScore(board.clickedNumbers.Count * 10);
+        //score.AddScore(board.clickedNumbers.Count * 10);
         board.UnClickNumbers();
         ClickManager.Instance.blocked = false;
     }
@@ -91,8 +91,12 @@ public class SuccessFacade {
         var scoreRect = score.view.GetComponent<RectTransform>();
 
         foreach (var n in board.clickedNumbers) {
-            ScoreFlying.Instance.Fly(n.transform.position, scoreRect.position);
+            ScoreFlying.Instance.Fly(n.transform.position, scoreRect.position, onCompleted);
             await UniTask.Delay(100);
+        }
+
+        void onCompleted() {
+            score.AddScore(score: 10, pulse: true);
         }
     }
 }

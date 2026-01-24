@@ -53,10 +53,12 @@ public class GameController : Singletone<GameController> {
     public async void ToMenu(bool first = false) {
         State = GameStateType.Menu;
         enviroment.ToMenu(first);
-        progress.HideVisual();
+        //progress.HideVisual();
+        progress.ToGame(false);
+
 
         if (!first) {
-            await board.Hide();
+            board.Hide();
         }
 
         ScreenManager.Instance.Set<MenuScreen>();
@@ -73,6 +75,7 @@ public class GameController : Singletone<GameController> {
         board.Show();
         enviroment.ToGame();
         progress.Generate();
+        progress.ToGame(true);
     }
 
     private Vector2 GetSizeByCamera() {

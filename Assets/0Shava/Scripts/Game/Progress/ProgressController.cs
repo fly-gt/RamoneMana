@@ -25,6 +25,11 @@ public class ProgressController : MonoBehaviour {
     public void Initialize(Vector2 sizeCamera) {
         transform.SetZ(1);
         transform.localScale = new Vector3(sizeCamera.x, sizeCamera.x, 1f);
+        ToGame(false, force: true);
+    }
+
+    public void ToGame(bool game, bool force = false) {
+        view.ToGame(game, force);
     }
 
     public void Generate() {

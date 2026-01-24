@@ -1,9 +1,11 @@
-﻿using TMPro;
+﻿using DG.Tweening;
+using TMPro;
 using UnityEngine;
 
 public class ScoreView : MonoBehaviour {
     public TMP_Text scoreText;
     private readonly string ex = "{0}";
+    private Sequence addScoreTween;
 
     public void SetScore(int score) {
         if (scoreText) {
@@ -11,7 +13,10 @@ public class ScoreView : MonoBehaviour {
         }
     }
 
-    public void SetActive(bool value) {
-        //ScreenManager.Instance.Get<GameScreen>().scoreRect.gameObject.SetActive(value);
+    public void AddScoreVFX() {
+        addScoreTween?.Kill();
+        addScoreTween = DOTween.Sequence();
+        addScoreTween.Append(transform.DOScale(0.6f, 0.05f));
+        addScoreTween.Append(transform.DOScale(1, 0.05f));
     }
 }
