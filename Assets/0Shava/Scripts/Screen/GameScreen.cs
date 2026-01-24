@@ -9,6 +9,10 @@ public class GameScreen : ScreenBase {
     public ScoreView scoreView;
 
     public void PauseClick() {
+        if (ScoreFlying.Instance.HasFlying) {
+            return;
+        }
+
         GameController.Instance.ToPause();
     }
 
