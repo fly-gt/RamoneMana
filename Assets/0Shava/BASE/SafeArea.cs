@@ -1,4 +1,9 @@
 ﻿using UnityEngine;
+//Anchors панели должны быть Stretch
+//Render Mode: Screen Space - Overlay или Camera
+//Canvas Scaler:
+//UI Scale Mode: Scale With Screen Size
+//Match: 0.5(или под проект)
 
 [RequireComponent(typeof(RectTransform))]
 public class SafeArea : MonoBehaviour {
