@@ -9,6 +9,7 @@ public class ScreenManager : Singletone<ScreenManager> {
     [SerializeField] private List<AssetReference> screenAssets;
     [SerializeField] private GraphicRaycaster raycaster;
     public Canvas canvas;
+    public RectTransform panel;
 
     private Dictionary<Type, ScreenBase> screens = new();
 
@@ -19,7 +20,8 @@ public class ScreenManager : Singletone<ScreenManager> {
         //screens = FindObjectsOfType<ScreenBase>(true).ToDictionary(x => x.GetType());
 
         foreach (var screen in screenAssets) {
-            var s =  await UtilityAdressables.InitializeObject<ScreenBase>(screen, transform);
+            var parent = panel != null ? panel : transform;
+            var s =  await UtilityAdressables.InitializeObject<ScreenBase>(screen, parent);
             s.gameObject.name = s.GetType().Name;
             screens.Add(s.GetType(), s);
             //Debug.Log($"{s.GetType()} {s}");

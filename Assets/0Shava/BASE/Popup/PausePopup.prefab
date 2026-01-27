@@ -166,11 +166,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7224640906121534149, guid: 00ea75c1b39a92b40977f564250c7b4e, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 396.0196
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 7224640906121534149, guid: 00ea75c1b39a92b40977f564250c7b4e, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 157.6269
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 7224640906121534149, guid: 00ea75c1b39a92b40977f564250c7b4e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -206,7 +206,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7224640906121534149, guid: 00ea75c1b39a92b40977f564250c7b4e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -232
+      value: -262
       objectReference: {fileID: 0}
     - target: {fileID: 7224640906121534149, guid: 00ea75c1b39a92b40977f564250c7b4e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -223,6 +223,14 @@ PrefabInstance:
     - target: {fileID: 7894140242644769884, guid: 00ea75c1b39a92b40977f564250c7b4e, type: 3}
       propertyPath: m_text
       value: Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7894140242644769884, guid: 00ea75c1b39a92b40977f564250c7b4e, type: 3}
+      propertyPath: m_fontSize
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7894140242644769884, guid: 00ea75c1b39a92b40977f564250c7b4e, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -280,11 +288,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7224640906121534149, guid: 00ea75c1b39a92b40977f564250c7b4e, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 396.0196
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 7224640906121534149, guid: 00ea75c1b39a92b40977f564250c7b4e, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 157.6269
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 7224640906121534149, guid: 00ea75c1b39a92b40977f564250c7b4e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -340,7 +348,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7894140242644769884, guid: 00ea75c1b39a92b40977f564250c7b4e, type: 3}
       propertyPath: m_fontSize
-      value: 63.83
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7894140242644769884, guid: 00ea75c1b39a92b40977f564250c7b4e, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
