@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6576172800528943735}
   - component: {fileID: 9121019940770825639}
   - component: {fileID: -2099156364856504074}
+  - component: {fileID: 8304831897062993816}
   m_Layer: 0
   m_Name: AppShared
   m_TagString: Untagged
@@ -74,3 +75,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cecf58dbb9414d47916d7a154bc9062, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProfileController
+--- !u!114 &8304831897062993816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7316878650219139957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28a87dbcca05f1142aebaef4fae0b735, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VibrationManager
+  Enable: 1

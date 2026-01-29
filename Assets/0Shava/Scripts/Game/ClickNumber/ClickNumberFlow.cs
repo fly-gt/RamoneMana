@@ -27,12 +27,15 @@ public class ClickNumberFlow {
             return;
         }
 
+
         progress.AddProgress(nc.Number);
 
         if (progress.Progress == progress.Target) {
             success.Success();
         } else if (progress.Progress > progress.Target) {
             failure.Failure();
+        } else {
+            VibrationManager.Medium();
         }
     }
 
@@ -54,6 +57,7 @@ public class FailureFacade {
 
     public async void Failure() {
         Debug.Log("Failure");
+        VibrationManager.Failure();
         ClickManager.Instance.blocked = true;
         await ScreenManager.Instance.Get<GameScreen>().WrongEffect();
         await UniTask.Delay(200);
@@ -78,6 +82,7 @@ public class SuccessFacade {
     public async void Success() {
         Debug.Log("Success");
         ClickManager.Instance.blocked = true;
+        VibrationManager.Success();
         await Fly();
         await UniTask.Delay(1000);
         progress.Generate();
@@ -97,6 +102,7 @@ public class SuccessFacade {
         }
 
         void onCompleted() {
+            VibrationManager.Medium();
             score.AddScore(score: 10, pulse: true);
         }
     }

@@ -33,6 +33,8 @@ public class UIButtonClick : MonoBehaviour, IPointerEnterHandler {
         foreach (var ef in GetComponents<ButtonEffect>()) {
             ef.Clear();
         }
+
+        VibrationManager.Medium();
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
