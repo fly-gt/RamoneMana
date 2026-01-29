@@ -32,7 +32,7 @@ public class EndGamePopup : BasePopup {
     public void AgainClick() {
         //MusicUtility.StartMusic();
         //PlayerController.Instance.model.CleanWitchTutorial();
-        ProfileController.Instance.Clear();
+        ProfileManager.Instance.Clear();
         AppShared.Instance.appState.SetState<GameState>();
         PopupManager.Instance.Close();
         //YG2.InterstitialAdvShow();

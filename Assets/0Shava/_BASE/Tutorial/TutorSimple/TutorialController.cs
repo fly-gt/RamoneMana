@@ -38,7 +38,7 @@ public class TutorialController : MonoBehaviour {
             model.IncreaseIterator();
         }
 
-        ProfileController.Instance.SetTutorial(false);
+        //ProfileController.Instance.SetTutorial(false);
         //GameController.Instance.SetComponents_Tutorial(true);
         //GameController.Instance.StartGameplay(false);
         Disable();
