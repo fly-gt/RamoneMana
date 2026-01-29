@@ -1,0 +1,3 @@
+﻿Build path: D:/Unity/_BUILDS/RamonemanaWEB
+Build number: 1
+PluginYG version: 2.007
