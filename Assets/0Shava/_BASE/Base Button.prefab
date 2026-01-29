@@ -163,7 +163,7 @@ MonoBehaviour:
   ClickScale: 1
   clickScale: 0.7
   clickDuration: 0.1
-  clickAE: {fileID: 0}
+  clickAE: {fileID: 11400000, guid: f66ea967fb9da444db524234a540c444, type: 2}
   enterAE: {fileID: 0}
 --- !u!1 &6653563532121557387
 GameObject:

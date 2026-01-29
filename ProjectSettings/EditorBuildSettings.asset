@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/0Shava/BASE/Root/Root.unity
+    path: Assets/0Shava/_BASE/Root/Root.unity
     guid: 50c672172115e3347b5283dc0837989b
   - enabled: 1
     path: Assets/0Shava/Scenes/Game.unity

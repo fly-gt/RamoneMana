@@ -56,7 +56,7 @@ public class TutorialView : MonoBehaviour {
         messageTxt.text = message;
 
         messageRect.localScale = Vector3.zero;
-        AudioManager.Instance.TryPlay(bubbleShowAE, messageRect.transform.position);
+        //AudioManager.Instance.TryPlay(bubbleShowAE, messageRect.transform.position);
         await messageRect.DOScale(Vector3.one, 0.2f);
     }
 

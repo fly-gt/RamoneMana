@@ -60,6 +60,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c14b90b6bf7454a48b7bcbc26e32396b
+    m_Address: AudioManager
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e3986bb41a1f0f84c902f548adf5523d
+    m_Address: Assets/0Shava/_BASE/AudioManager/Audio.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ef19c19bb4e858d43a55bd267d017447
     m_Address: GameScreen
     m_ReadOnly: 0

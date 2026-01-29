@@ -4,6 +4,11 @@ using UnityEngine;
 public class Audio : MonoBehaviour {
     public AudioSource audioSource;
     public Coroutine doPlay;
+    public ObjectPool objectPool;
+
+    public void Initialize(ObjectPool op) {
+        objectPool = op;
+    }
 
     public void Play() {
         audioSource.Play();
@@ -13,6 +18,18 @@ public class Audio : MonoBehaviour {
     private IEnumerator DoPlay() {
         var wait = new WaitForSeconds(audioSource.clip.length);
         yield return wait;
-        Destroy(gameObject);
+
+        if (objectPool) {
+            objectPool.Return(gameObject);
+        } else {
+            Debug.LogError("havent object pool");
+        }
+
+        Clear();
+    }
+
+    private void Clear() {
+        objectPool = null;
+        audioSource.clip = null;
     }
 }

@@ -30,7 +30,7 @@ public class PlayerAudio : MonoBehaviour {
 
     public void PlayerLose() {
         if (loseAE) {
-            AudioManager.Instance.TryPlay(loseAE, movable.position);
+            //AudioManager.TryPlay(loseAE, movable.position);
         }
     }
 }

@@ -27,7 +27,6 @@ public class ClickNumberFlow {
             return;
         }
 
-
         progress.AddProgress(nc.Number);
 
         if (progress.Progress == progress.Target) {
@@ -36,6 +35,9 @@ public class ClickNumberFlow {
             failure.Failure();
         } else {
             VibrationManager.Medium();
+            AudioManager.TryPlay(AEShared.asset.clickNumber, new AudioPlayData {
+                Position = Camera.main.transform.position,
+            });
         }
     }
 
@@ -58,6 +60,9 @@ public class FailureFacade {
     public async void Failure() {
         Debug.Log("Failure");
         VibrationManager.Failure();
+        AudioManager.TryPlay(AEShared.asset.failureNumber, new AudioPlayData {
+            Position = Camera.main.transform.position,
+        });
         ClickManager.Instance.blocked = true;
         await ScreenManager.Instance.Get<GameScreen>().WrongEffect();
         await UniTask.Delay(200);
@@ -83,6 +88,10 @@ public class SuccessFacade {
         Debug.Log("Success");
         ClickManager.Instance.blocked = true;
         VibrationManager.Success();
+        AudioManager.TryPlay(AEShared.asset.successNumber, new AudioPlayData {
+            Position = Camera.main.transform.position,
+        });
+
         await Fly();
         await UniTask.Delay(1000);
         progress.Generate();
@@ -103,6 +112,9 @@ public class SuccessFacade {
 
         void onCompleted() {
             VibrationManager.Medium();
+            AudioManager.TryPlay(AEShared.asset.addScore, new AudioPlayData {
+                Position = Camera.main.transform.position,
+            });
             score.AddScore(score: 10, pulse: true);
         }
     }

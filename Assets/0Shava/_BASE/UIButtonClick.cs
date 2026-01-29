@@ -27,7 +27,9 @@ public class UIButtonClick : MonoBehaviour, IPointerEnterHandler {
         }
 
         if (clickAE) {
-            AudioManager.Instance.TryPlay(clickAE, Camera.main.transform.position);
+            AudioManager.TryPlay(clickAE, new AudioPlayData {
+                Position = Camera.main.transform.position
+            });
         }
 
         foreach (var ef in GetComponents<ButtonEffect>()) {
@@ -39,7 +41,9 @@ public class UIButtonClick : MonoBehaviour, IPointerEnterHandler {
 
     public void OnPointerEnter(PointerEventData eventData) {
         if (enterAE) {
-            AudioManager.Instance.TryPlay(enterAE, Camera.main.transform.position);
+            AudioManager.TryPlay(enterAE, new AudioPlayData {
+                Position = Camera.main.transform.position
+            });
         }
     }
 }

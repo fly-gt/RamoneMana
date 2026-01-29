@@ -36,6 +36,7 @@ public class SimpleInit : IInitializable {
     public async UniTask InitializeAsync() {
         await UtilityAdressables.InitializeObject<AppShared>();
         await UtilityAdressables.InitializeObject<PopupManager>();
+        await UtilityAdressables.InitializeObject<AudioManager>();
     }
 }
 
