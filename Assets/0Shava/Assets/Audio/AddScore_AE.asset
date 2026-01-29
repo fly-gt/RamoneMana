@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: AddScore_AE
   m_EditorClassIdentifier: Assembly-CSharp::AudioEventAsset
   clip:
-  - {fileID: 8300000, guid: 327f9bba361647c419add2b2f01effe0, type: 3}
+  - {fileID: 8300000, guid: 96475e9fae95b2949976401b76ff101e, type: 3}
   volume: 1
   pitch: {x: 1, y: 1}

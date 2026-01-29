@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioEventAsset
   clip:
   - {fileID: 8300000, guid: 327f9bba361647c419add2b2f01effe0, type: 3}
-  volume: 1
+  volume: 0.8
   pitch: {x: 1, y: 1}

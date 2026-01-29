@@ -15,3 +15,4 @@ MonoBehaviour:
   clickNumber: {fileID: 11400000, guid: 850128732a78f1e4e9707aef31d2439c, type: 2}
   successNumber: {fileID: 11400000, guid: ede9e2ff96a741344a9930a10a1f05b0, type: 2}
   failureNumber: {fileID: 11400000, guid: 823f7d95d4bfdc444a047a011adb4718, type: 2}
+  addScore: {fileID: 11400000, guid: 0aa68458a9163da468c67ef700d19db7, type: 2}
