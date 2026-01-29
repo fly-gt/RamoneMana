@@ -48,6 +48,7 @@ public class GameController : Singletone<GameController> {
 
         clickNumberFlow = new(progress, board, score);
         score.Setup();
+        MusicManager.Instance.ResetMusic();
     }
 
     public async void ToMenu(bool first = false) {

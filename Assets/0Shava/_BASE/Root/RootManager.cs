@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -33,10 +34,17 @@ public interface IInitializable {
 }
 
 public class SimpleInit : IInitializable {
+    private List<UniTask> list = new();
     public async UniTask InitializeAsync() {
-        await UtilityAdressables.InitializeObject<AppShared>();
-        await UtilityAdressables.InitializeObject<PopupManager>();
-        await UtilityAdressables.InitializeObject<AudioManager>();
+        list = new() {
+            UtilityAdressables.InitializeObject<AppShared>(),
+            UtilityAdressables.InitializeObject<PopupManager>(),
+            UtilityAdressables.InitializeObject<AudioManager>(),
+            UtilityAdressables.InitializeObject<MusicManager>(),
+        };
+
+        await UniTask.WhenAll(list);
+
     }
 }
 

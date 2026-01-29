@@ -51,7 +51,7 @@ public class MusicManager : Singletone<MusicManager> {
 
     public async void Stop(float fade = 0) {
         if (!Mathf.Approximately(fade, 0)) {
-            await audioSource.DOFade(0, fade).ToUniTask();
+            await audioSource.DOFade(0, fade);
         }
 
         audioSource.Stop();
