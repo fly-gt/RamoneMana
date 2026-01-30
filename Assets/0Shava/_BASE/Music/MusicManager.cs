@@ -1,24 +1,24 @@
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using NaughtyAttributes;
-using Unity.VisualScripting;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class MusicManager : Singletone<MusicManager> {
     public AudioClip[] clips;
     [Space]
     public AudioClip current;
     public AudioSource audioSource;
     public int iterator;
-    public bool started;
 
     private void Awake() {
+        audioSource = GetComponent<AudioSource>();
         DontDestroyOnLoad(gameObject);
     }
 
     //igraem po krygy 
     private void Update() {
-        if (!started || audioSource.time < audioSource.clip.length) {
+        if (audioSource.clip == null || audioSource.time < audioSource.clip.length) {
             return;
         }
 
@@ -31,10 +31,6 @@ public class MusicManager : Singletone<MusicManager> {
         }
 
         current = clips[iterator++ % clips.Length];
-
-        if (audioSource == null) {
-            audioSource = transform.AddComponent<AudioSource>();
-        }
 
         audioSource.clip = current;
         audioSource.volume = 1;
