@@ -11,7 +11,7 @@ public class GameScreen : ScreenBase {
     public TextFlying flying;
 
     public void PauseClick() {
-        if (GameController.Instance.starFly.IsFlying) {
+        if (FlyShared.Instance.StarFly.IsFlying) {
             return;
         }
 

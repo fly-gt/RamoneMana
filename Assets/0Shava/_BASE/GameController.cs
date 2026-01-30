@@ -24,7 +24,6 @@ public class GameController : Singletone<GameController> {
     public ScoreController score;
     [Space]
     public ClickNumberFlow clickNumberFlow;
-    public StarScoreConcreteFlying starFly;
     [Space]
     public GameStateType State;
 
@@ -49,15 +48,14 @@ public class GameController : Singletone<GameController> {
 
         clickNumberFlow = new(progress, board, score);
         score.Setup();
+
         MusicManager.Instance.ResetMusic();
     }
 
     public async void ToMenu(bool first = false) {
         State = GameStateType.Menu;
         enviroment.ToMenu(first);
-        //progress.HideVisual();
         progress.ToGame(false);
-
 
         if (!first) {
             board.Hide();

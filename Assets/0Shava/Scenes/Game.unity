@@ -119,7 +119,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &394211722
+--- !u!1 &1024913319
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,68 +127,43 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 394211725}
-  - component: {fileID: 394211724}
-  - component: {fileID: 394211726}
+  - component: {fileID: 1024913321}
+  - component: {fileID: 1024913320}
   m_Layer: 0
-  m_Name: StarFly
+  m_Name: FlyShared
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &394211724
+--- !u!114 &1024913320
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 394211722}
+  m_GameObject: {fileID: 1024913319}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f03e4074e6411d04da524a27e577a00c, type: 3}
+  m_Script: {fileID: 11500000, guid: a4cc9d215123c5d47a4881c2463601d9, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ObjectPool
-  prefab:
-    m_AssetGUID: 7b0988e45989b2f4e83eceb20c94946b
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 0
-  initSize: 10
---- !u!4 &394211725
+  m_EditorClassIdentifier: Assembly-CSharp::FlyShared
+  StarFly: {fileID: 1848427226}
+--- !u!4 &1024913321
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 394211722}
+  m_GameObject: {fileID: 1024913319}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: 0}
+  m_LocalPosition: {x: -2.94789, y: 7.19799, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &394211726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 394211722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5ab874be376421438c9a1ef22257204, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StarScoreConcreteFlying
-  pool: {fileID: 394211724}
-  duration: 0.6
-  moveEase: 7
-  startScale: 1
-  endScale: 0.5
-  IsFlying: 0
 --- !u!1 &1112583107
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,6 +511,75 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1848427222
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1848427225}
+  - component: {fileID: 1848427224}
+  - component: {fileID: 1848427226}
+  m_Layer: 0
+  m_Name: StarFly
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1848427224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848427222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f03e4074e6411d04da524a27e577a00c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectPool
+  prefab:
+    m_AssetGUID: 7b0988e45989b2f4e83eceb20c94946b
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  initSize: 10
+--- !u!4 &1848427225
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848427222}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.94789, y: 7.19799, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1848427226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848427222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2753c3ec114d0d04b809f389e40e4d99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectFlying
+  pool: {fileID: 1848427224}
+  duration: 0.6
+  moveEase: 7
+  startScale: 1
+  endScale: 0.5
 --- !u!1 &1914892899
 GameObject:
   m_ObjectHideFlags: 0
@@ -610,7 +654,6 @@ MonoBehaviour:
   progress: {fileID: 0}
   boardLine: {fileID: 0}
   score: {fileID: 1445713883}
-  starFly: {fileID: 394211726}
   State: 0
 --- !u!114 &1914892902
 MonoBehaviour:
@@ -740,4 +783,5 @@ SceneRoots:
   - {fileID: 1112583110}
   - {fileID: 1113829279279674105}
   - {fileID: 1445713881}
-  - {fileID: 394211725}
+  - {fileID: 1848427225}
+  - {fileID: 1024913321}

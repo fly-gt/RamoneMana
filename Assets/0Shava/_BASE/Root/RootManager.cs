@@ -16,12 +16,12 @@ public class RootManager : MonoBehaviour {
     private async void Start() {
         await Addressables.InitializeAsync().Task;
         loader.SetProgress(0, inited.Count);
-        await UniTask.Delay(1000);
+        await UniTask.Delay(100);
 
         for (int i = 0; i < inited.Count; i++) {
             await inited[i].InitializeAsync();
             loader.SetProgress((i + 1), inited.Count);
-            await UniTask.Delay(1000);
+            await UniTask.Delay(100);
         }
 
         inited.Clear();
@@ -44,7 +44,6 @@ public class SimpleInit : IInitializable {
         };
 
         await UniTask.WhenAll(list);
-
     }
 }
 
