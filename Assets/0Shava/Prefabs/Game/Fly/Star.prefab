@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7888077894282009215}
   - component: {fileID: 7974356999645695299}
   m_Layer: 0
-  m_Name: ScoreFly
+  m_Name: Star
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

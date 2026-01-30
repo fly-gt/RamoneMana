@@ -50,6 +50,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a0bc80a275df83c4ba73deddff3ab2f1
+    m_Address: Assets/0Shava/Prefabs/Game/ScoreText.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a2c422139e2650649bda01d655b9121a
     m_Address: MenuScreen
     m_ReadOnly: 0

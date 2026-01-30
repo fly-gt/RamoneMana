@@ -24,6 +24,7 @@ public class GameController : Singletone<GameController> {
     public ScoreController score;
     [Space]
     public ClickNumberFlow clickNumberFlow;
+    public StarScoreConcreteFlying starFly;
     [Space]
     public GameStateType State;
 

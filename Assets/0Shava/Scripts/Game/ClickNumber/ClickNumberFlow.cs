@@ -1,5 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class ClickNumberFlow {
     public FailureFacade failure;
@@ -17,7 +18,7 @@ public class ClickNumberFlow {
 
         board.UnClick += OnUnClick;
 
-        failure = new(board);
+        failure = new(board, score);
         success = new(progress, board, score);
         unclick = new(progress);
     }
@@ -52,9 +53,11 @@ public class ClickNumberFlow {
 
 public class FailureFacade {
     public BoardController board;
+    public ScoreController score;
 
-    public FailureFacade(BoardController board) {
+    public FailureFacade(BoardController board, ScoreController score) {
         this.board = board;
+        this.score = score;
     }
 
     public async void Failure() {
@@ -65,8 +68,14 @@ public class FailureFacade {
         });
         ClickManager.Instance.blocked = true;
         await ScreenManager.Instance.Get<GameScreen>().WrongEffect();
+        var substractScore = Mathf.Clamp(score.Score, 0, 50);
+
+        if (substractScore != 0) {
+            score.SubtractScore(substractScore);
+            ScreenManager.Instance.Get<GameScreen>().ScoreTextFly(substractScore, false);
+        }
+
         await UniTask.Delay(200);
-        //progress.ClearProgress();
         board.UnClickNumbers();
 
         ClickManager.Instance.blocked = false;
@@ -95,27 +104,33 @@ public class SuccessFacade {
         await Fly();
         await UniTask.Delay(1000);
         progress.Generate();
-        //score.AddScore(board.clickedNumbers.Count * 10);
         board.ResetupClicked();
         board.UnClickNumbers();
         ClickManager.Instance.blocked = false;
     }
 
     private async UniTask Fly() {
-        var flyRect = ScoreFlying.Instance.GetComponent<RectTransform>();
         var scoreRect = score.view.GetComponent<RectTransform>();
+        var totalScore = 0;
 
         foreach (var n in board.clickedNumbers) {
-            ScoreFlying.Instance.Fly(n.transform.position, scoreRect.position, onCompleted);
+            var isLast = n == board.clickedNumbers[^1];
+            var value = n.Number * Random.Range(6, 8);
+            totalScore += value;
+            GameController.Instance.starFly.Fly(n.transform.position, scoreRect.position, () => onCompleted(value, isLast));
             await UniTask.Delay(100);
         }
 
-        void onCompleted() {
+        void onCompleted(int value, bool last) {
             VibrationManager.Medium();
             AudioManager.TryPlay(AEShared.asset.addScore, new AudioPlayData {
                 Position = Camera.main.transform.position,
             });
-            score.AddScore(score: 10, pulse: true);
+            score.AddScore(value, pulse: true);
+
+            if (last) {
+                ScreenManager.Instance.Get<GameScreen>().ScoreTextFly(totalScore, true);
+            }
         }
     }
 }
