@@ -13,6 +13,11 @@ public class UIButtonClick : MonoBehaviour, IPointerEnterHandler {
     [Space]
     public AudioEventAsset clickAE;
     public AudioEventAsset enterAE;
+    private AudioManager audioManager;
+
+    private void Start() {
+        audioManager = ServiceLocator.Get<AudioManager>();
+    }
 
     [ContextMenu("Click")]
     public void Click() {
@@ -27,7 +32,7 @@ public class UIButtonClick : MonoBehaviour, IPointerEnterHandler {
         }
 
         if (clickAE) {
-            AudioManager.TryPlay(clickAE, new AudioPlayData {
+            audioManager.TryPlay(clickAE, new AudioPlayData {
                 Position = Camera.main.transform.position
             });
         }
@@ -41,7 +46,7 @@ public class UIButtonClick : MonoBehaviour, IPointerEnterHandler {
 
     public void OnPointerEnter(PointerEventData eventData) {
         if (enterAE) {
-            AudioManager.TryPlay(enterAE, new AudioPlayData {
+            audioManager.TryPlay(enterAE, new AudioPlayData {
                 Position = Camera.main.transform.position
             });
         }

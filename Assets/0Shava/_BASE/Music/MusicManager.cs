@@ -21,7 +21,7 @@ public class MusicManager : Singletone<MusicManager> {
         if (audioSource.clip == null || audioSource.time < audioSource.clip.length) {
             return;
         }
-
+        
         ResetMusic();
     }
 
@@ -30,9 +30,7 @@ public class MusicManager : Singletone<MusicManager> {
             return;
         }
 
-        current = clips[iterator++ % clips.Length];
-
-        audioSource.clip = current;
+        audioSource.clip = clips[iterator++ % clips.Length]; ;
         audioSource.volume = 1;
         audioSource.Play();
     }

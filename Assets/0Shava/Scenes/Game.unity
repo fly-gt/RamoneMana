@@ -580,6 +580,7 @@ MonoBehaviour:
   moveEase: 7
   startScale: 1
   endScale: 0.5
+  IsFlying: 0
 --- !u!1 &1914892899
 GameObject:
   m_ObjectHideFlags: 0

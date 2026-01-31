@@ -1,8 +1,6 @@
 using Cysharp.Threading.Tasks;
-using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 
 public class RootManager : MonoBehaviour {
     public RootLoader loader;
@@ -13,43 +11,27 @@ public class RootManager : MonoBehaviour {
         inited.Add(new SimpleInit());
     }
 
-    private async void Start() {
-        await Addressables.InitializeAsync().Task;
-        loader.SetProgress(0, inited.Count);
+    private void Start() {
+        Start_Async();
+    }
+
+    private async void Start_Async() {
+        var count = inited.Count + 1;
+
+        loader.SetProgress(0, count);
         await UniTask.Delay(100);
 
         for (int i = 0; i < inited.Count; i++) {
             await inited[i].InitializeAsync();
-            loader.SetProgress((i + 1), inited.Count);
+            loader.SetProgress((i + 1), count);
             await UniTask.Delay(100);
         }
+
+        await RootCompositionServices.Initialize();
+        loader.SetProgress(count, count);
 
         inited.Clear();
         SceneTransfer.Transfer2(SceneName.Game);
     }
 }
 
-public interface IInitializable {
-    UniTask InitializeAsync();
-}
-
-public class SimpleInit : IInitializable {
-    private List<UniTask> list = new();
-    public async UniTask InitializeAsync() {
-        list = new() {
-            UtilityAdressables.InitializeObject<AppShared>(),
-            UtilityAdressables.InitializeObject<PopupManager>(),
-            UtilityAdressables.InitializeObject<AudioManager>(),
-            UtilityAdressables.InitializeObject<MusicManager>(),
-        };
-
-        await UniTask.WhenAll(list);
-    }
-}
-
-public class AddressablesInit : IInitializable {
-    public async UniTask InitializeAsync() {
-        await Addressables.InitializeAsync().Task;
-        UtilityAdressables.InitializeCache();
-    }
-}

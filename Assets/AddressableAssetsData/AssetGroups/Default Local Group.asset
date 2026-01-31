@@ -15,6 +15,16 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: ac1cb066c496ad04fb006f9e597a563c
   m_SerializeEntries:
+  - m_GUID: 193f6289a9185b8418b6ab405211d619
+    m_Address: ServiceLocator
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 360af4a9967b5e54aa7838cc2bba83c5
+    m_Address: AdsManager
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 50cfdd211ad4d81429ad071d6a767e93
     m_Address: Environment
     m_ReadOnly: 0

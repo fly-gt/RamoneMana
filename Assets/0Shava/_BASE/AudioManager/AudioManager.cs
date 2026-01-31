@@ -1,19 +1,15 @@
 using UnityEngine;
 
-public class AudioManager : Singletone<AudioManager> {
-    public IAudioService service;
+public class AudioManager : MonoBehaviour {
+    private IAudioService service;
 
     private void Awake() {
         service = GetComponent<IAudioService>();
         DontDestroyOnLoad(gameObject);
     }
 
-    public static void TryPlay(IAudioAsset ae, AudioPlayData data) {
-        if (!Instance) {
-            return;
-        }
-
-        Instance.service.Play(ae, data);
+    public void TryPlay(IAudioAsset ae, AudioPlayData data) {
+        service.Play(ae, data);
     }
 }
 

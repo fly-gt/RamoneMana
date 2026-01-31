@@ -52,13 +52,11 @@ public class BoardController : MonoBehaviour {
     public bool TryClickNumber(NumberController nc) {
         //проверяем соседей
         if (clickedNumbers.Count > 0 && !clickedNumbers[^1].neighboues.Contains(nc.Index)) {
-            Debug.Log("R 2");
             return false;
         }
 
         //првоерка на clicked
         if (!nc.TryClick()) {
-            Debug.Log("R 1");
             return false;
         }
 

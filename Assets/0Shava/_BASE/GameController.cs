@@ -48,8 +48,6 @@ public class GameController : Singletone<GameController> {
 
         clickNumberFlow = new(progress, board, score);
         score.Setup();
-
-        MusicManager.Instance.ResetMusic();
     }
 
     public async void ToMenu(bool first = false) {
@@ -71,6 +69,7 @@ public class GameController : Singletone<GameController> {
 
     public async Task ToGameplay() {
         State = GameStateType.Game;
+        TryFirstEnterByYG2();
         ScreenManager.Instance.Set<GameScreen>();
         board.Show();
         enviroment.ToGame();
@@ -85,6 +84,12 @@ public class GameController : Singletone<GameController> {
         var y = size.y / spriteSize.y;
 
         return new Vector2(x, y);
+    }
+
+    private void TryFirstEnterByYG2() {
+        if (YG2Helper.Instance.TryInit()) {
+            MusicManager.Instance.ResetMusic();
+        }
     }
     #region old
     //public bool IsPlaying;

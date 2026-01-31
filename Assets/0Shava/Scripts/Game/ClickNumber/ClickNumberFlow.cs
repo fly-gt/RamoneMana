@@ -9,6 +9,7 @@ public class ClickNumberFlow {
     public ProgressController progress;
     public BoardController board;
     public ScoreController score;
+    private AudioManager audioManager;
 
     public ClickNumberFlow(ProgressController progress, BoardController board, ScoreController score) {
         this.progress = progress;
@@ -20,6 +21,8 @@ public class ClickNumberFlow {
         failure = new(board, score);
         success = new(progress, board, score);
         unclick = new(progress);
+
+        audioManager = ServiceLocator.Get<AudioManager>();
     }
 
     public void ClickNumber(NumberController nc) {
@@ -35,7 +38,7 @@ public class ClickNumberFlow {
             failure.Failure();
         } else {
             VibrationManager.Medium();
-            AudioManager.TryPlay(AEShared.asset.clickNumber, new AudioPlayData {
+            audioManager.TryPlay(AEShared.asset.clickNumber, new AudioPlayData {
                 Position = Camera.main.transform.position,
             });
         }
@@ -53,16 +56,19 @@ public class ClickNumberFlow {
 public class FailureFacade {
     public BoardController board;
     public ScoreController score;
+    private AudioManager audioManager;
 
     public FailureFacade(BoardController board, ScoreController score) {
         this.board = board;
         this.score = score;
+        audioManager = ServiceLocator.Get<AudioManager>();
     }
 
     public async void Failure() {
         Debug.Log("Failure");
         VibrationManager.Failure();
-        AudioManager.TryPlay(AEShared.asset.failureNumber, new AudioPlayData {
+
+        audioManager.TryPlay(AEShared.asset.failureNumber, new AudioPlayData {
             Position = Camera.main.transform.position,
         });
         ClickManager.Instance.blocked = true;
@@ -85,78 +91,46 @@ public class SuccessFacade {
     public ProgressController progress;
     public BoardController board;
     public ScoreController score;
+    private AudioManager audioManager;
 
     public SuccessFacade(ProgressController progress, BoardController board, ScoreController score) {
         this.progress = progress;
         this.board = board;
         this.score = score;
+        audioManager = ServiceLocator.Get<AudioManager>();
     }
 
     public async void Success() {
-        Debug.Log("Success");
         ClickManager.Instance.blocked = true;
-        Debug.Log("Success1");
-
         VibrationManager.Success();
-        Debug.Log("Success2");
 
-        AudioManager.TryPlay(AEShared.asset.successNumber, new AudioPlayData {
+        audioManager.TryPlay(AEShared.asset.successNumber, new AudioPlayData {
             Position = Camera.main.transform.position,
         });
-        Debug.Log("Success3");
 
         await Fly();
-        Debug.Log("Success4");
-
         await UniTask.Delay(1000);
-        Debug.Log("Success5");
-
         progress.Generate();
-        Debug.Log("Success6");
-
         board.ResetupClicked();
-        Debug.Log("Success7");
-
         board.UnClickNumbers();
-        Debug.Log("Success8");
-
         ClickManager.Instance.blocked = false;
-        Debug.Log("Success9");
-
     }
 
     private async UniTask Fly() {
-        Debug.Log("Fly 1");
-
         var scoreRect = score.view.GetComponent<RectTransform>();
-        Debug.Log("Fly 2");
-
         var totalScore = 0;
 
         foreach (var n in board.clickedNumbers) {
-            Debug.Log("Fly 2 1");
-
             var isLast = n == board.clickedNumbers[^1];
-            Debug.Log("Fly 2 2");
-
             var value = n.Number * Random.Range(6, 8);
-            Debug.Log("Fly 2 3");
-
             totalScore += value;
-            Debug.Log($"Fly 2 4 {FlyShared.Instance != null} {FlyShared.Instance?.StarFly != null}");
-
             FlyShared.Instance.StarFly.Fly(n.transform.position, scoreRect.position, () => onCompleted(value, isLast));
-            Debug.Log("Fly 2 5");
-
             await UniTask.Delay(100);
-            Debug.Log("Fly 2 6");
-
         }
-        Debug.Log("Fly 3");
 
         void onCompleted(int value, bool last) {
             VibrationManager.Medium();
-            AudioManager.TryPlay(AEShared.asset.addScore, new AudioPlayData {
+            audioManager.TryPlay(AEShared.asset.addScore, new AudioPlayData {
                 Position = Camera.main.transform.position,
             });
             score.AddScore(value, pulse: true);
