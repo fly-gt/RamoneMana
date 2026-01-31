@@ -5,6 +5,10 @@ public class AudioService : MonoBehaviour, IAudioService {
     public Audio audioPrefab;
     public ObjectPool pool;
 
+    private void Awake() {
+        DontDestroyOnLoad(gameObject);
+    }
+
     public async void Play(IAudioAsset asset, AudioPlayData data) {
         if (asset == null) return;
         if (asset is not AudioEventAsset ae) return;
@@ -28,4 +32,16 @@ public class AudioService : MonoBehaviour, IAudioService {
 
         audio.Play();
     }
+}
+
+public interface IAudioService {
+    void Play(IAudioAsset asset, AudioPlayData data);
+}
+
+public interface IAudioAsset {
+}
+
+//can be rework
+public struct AudioPlayData {
+    public Vector3 Position;
 }

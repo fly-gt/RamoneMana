@@ -88,7 +88,7 @@ public class GameController : Singletone<GameController> {
 
     private void TryFirstEnterByYG2() {
         if (YG2Helper.Instance.TryInit()) {
-            MusicManager.Instance.ResetMusic();
+            ServiceLocator.Get<IMusicService>().StartMusic();
         }
     }
     #region old

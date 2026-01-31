@@ -46,11 +46,10 @@ public class UtilityAdressables {
         return comp;
     }
 
-    public static async UniTask<T> InitializeObject<T>(AssetReference assetReference, Transform parent = null) where T : Component {
+    public static async UniTask<T> InitializeObject<T>(AssetReference assetReference, Transform parent = null) {
         var name = typeof(T).Name;
-
         //if (!AddressableIdExist(name)) {
-        //    return null;
+        //    return default;
         //}
 
         var handle = Addressables.InstantiateAsync(assetReference, parent: parent);
@@ -58,14 +57,14 @@ public class UtilityAdressables {
 
         if (handle.Status != UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationStatus.Succeeded) {
             Debug.LogError($"Failed to instantiate {assetReference.RuntimeKey}");
-            return null;
+            return default;
         }
 
         GameObject newObj = handle.Result;
 
         if (!newObj.TryGetComponent(out T comp)) {
             Debug.LogError($"Failed to 'Get Component' {assetReference.RuntimeKey}");
-            return null;
+            return default;
         }
 
         return comp;

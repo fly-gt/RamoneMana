@@ -1,11 +1,18 @@
 using Cysharp.Threading.Tasks;
+using UnityEngine;
+using UnityEngine.AddressableAssets;
 
-public static class RootCompositionServices  {
-    public static async UniTask Initialize() {
+public class RootCompositionServices : MonoBehaviour {
+    public new AssetReference audio;
+    public AssetReference music;
+
+    public async UniTask Initialize() {
         AdService adService = new AdService(AdProviderFactory.Create());
-        AudioManager audioManager = await UtilityAdressables.InitializeObject<AudioManager>();
+        IAudioService audioManager = await UtilityAdressables.InitializeObject<IAudioService>(audio);
+        IMusicService musicManager = await UtilityAdressables.InitializeObject<IMusicService>(music);
 
         ServiceLocator.Register(adService);
         ServiceLocator.Register(audioManager);
+        ServiceLocator.Register(musicManager);
     }
 }

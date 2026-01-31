@@ -7,7 +7,6 @@ public class SimpleInit : IInitializable {
         list = new() {
             UtilityAdressables.InitializeObject<AppShared>(),
             UtilityAdressables.InitializeObject<PopupManager>(),
-            UtilityAdressables.InitializeObject<MusicManager>(),
             UtilityAdressables.InitializeObject<ServiceLocator>(),
         };
 

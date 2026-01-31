@@ -9,7 +9,7 @@ public class ClickNumberFlow {
     public ProgressController progress;
     public BoardController board;
     public ScoreController score;
-    private AudioManager audioManager;
+    private IAudioService audioService;
 
     public ClickNumberFlow(ProgressController progress, BoardController board, ScoreController score) {
         this.progress = progress;
@@ -22,7 +22,7 @@ public class ClickNumberFlow {
         success = new(progress, board, score);
         unclick = new(progress);
 
-        audioManager = ServiceLocator.Get<AudioManager>();
+        audioService = ServiceLocator.Get<IAudioService>();
     }
 
     public void ClickNumber(NumberController nc) {
@@ -38,7 +38,7 @@ public class ClickNumberFlow {
             failure.Failure();
         } else {
             VibrationManager.Medium();
-            audioManager.TryPlay(AEShared.asset.clickNumber, new AudioPlayData {
+            audioService.Play(AEShared.asset.clickNumber, new AudioPlayData {
                 Position = Camera.main.transform.position,
             });
         }
@@ -56,19 +56,19 @@ public class ClickNumberFlow {
 public class FailureFacade {
     public BoardController board;
     public ScoreController score;
-    private AudioManager audioManager;
+    private IAudioService audioService;
 
     public FailureFacade(BoardController board, ScoreController score) {
         this.board = board;
         this.score = score;
-        audioManager = ServiceLocator.Get<AudioManager>();
+        audioService = ServiceLocator.Get<IAudioService>();
     }
 
     public async void Failure() {
         Debug.Log("Failure");
         VibrationManager.Failure();
 
-        audioManager.TryPlay(AEShared.asset.failureNumber, new AudioPlayData {
+        audioService.Play(AEShared.asset.failureNumber, new AudioPlayData {
             Position = Camera.main.transform.position,
         });
         ClickManager.Instance.blocked = true;
@@ -91,20 +91,20 @@ public class SuccessFacade {
     public ProgressController progress;
     public BoardController board;
     public ScoreController score;
-    private AudioManager audioManager;
+    private IAudioService audioService;
 
     public SuccessFacade(ProgressController progress, BoardController board, ScoreController score) {
         this.progress = progress;
         this.board = board;
         this.score = score;
-        audioManager = ServiceLocator.Get<AudioManager>();
+        audioService = ServiceLocator.Get<IAudioService>();
     }
 
     public async void Success() {
         ClickManager.Instance.blocked = true;
         VibrationManager.Success();
 
-        audioManager.TryPlay(AEShared.asset.successNumber, new AudioPlayData {
+        audioService.Play(AEShared.asset.successNumber, new AudioPlayData {
             Position = Camera.main.transform.position,
         });
 
@@ -130,7 +130,7 @@ public class SuccessFacade {
 
         void onCompleted(int value, bool last) {
             VibrationManager.Medium();
-            audioManager.TryPlay(AEShared.asset.addScore, new AudioPlayData {
+            audioService.Play(AEShared.asset.addScore, new AudioPlayData {
                 Position = Camera.main.transform.position,
             });
             score.AddScore(value, pulse: true);

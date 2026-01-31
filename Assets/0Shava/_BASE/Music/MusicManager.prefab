@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 59166987600146692}
-  - component: {fileID: 1863675372602223932}
   - component: {fileID: 142498274595282502}
+  - component: {fileID: -5846676420253533830}
   m_Layer: 0
   m_Name: MusicManager
   m_TagString: Untagged
@@ -33,25 +33,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1863675372602223932
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2607142458463045982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1049dbafc83bc244cae584156e9d9fd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MusicManager
-  clips:
-  - {fileID: 8300000, guid: 9482f7e156dbdf94185088eb9d301a84, type: 3}
-  - {fileID: 8300000, guid: f2fbf85ebabf603418821da179f6e281, type: 3}
-  - {fileID: 8300000, guid: 4fe4870ee6e109c419163ff149bb3cfd, type: 3}
-  current: {fileID: 0}
-  audioSource: {fileID: 142498274595282502}
-  iterator: 0
 --- !u!82 &142498274595282502
 AudioSource:
   m_ObjectHideFlags: 0
@@ -65,7 +46,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -149,3 +130,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-5846676420253533830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2607142458463045982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63739b47ce4eb0942aa0256f653670f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicService
+  musicTracks:
+  - {fileID: 8300000, guid: ed3a698c1a0b6d24393051885907130d, type: 3}
+  - {fileID: 8300000, guid: 01ebf168c3c61974dbce7e15a82d4f89, type: 3}
+  - {fileID: 8300000, guid: 68561f10628dfd34b871a0c0996a67cd, type: 3}

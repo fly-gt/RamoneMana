@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RootManager : MonoBehaviour {
     public RootLoader loader;
+    public RootCompositionServices rootCompositionServices;
     private List<IInitializable> inited = new();
 
     private void Awake() {
@@ -27,7 +28,7 @@ public class RootManager : MonoBehaviour {
             await UniTask.Delay(100);
         }
 
-        await RootCompositionServices.Initialize();
+        await rootCompositionServices.Initialize();
         loader.SetProgress(count, count);
 
         inited.Clear();
