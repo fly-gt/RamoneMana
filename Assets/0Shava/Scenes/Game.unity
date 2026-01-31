@@ -414,6 +414,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScoreController
   view: {fileID: 0}
+--- !u!1 &1485186231
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1485186232}
+  - component: {fileID: 1485186233}
+  m_Layer: 0
+  m_Name: Timer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1485186232
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485186231}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.01995, y: 0, z: -0.6819}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1485186233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485186231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa381d422aefce84dbde0e8d7c1e73ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TimerManager
+  view: {fileID: 0}
 --- !u!1 &1508049486
 GameObject:
   m_ObjectHideFlags: 0
@@ -579,7 +624,7 @@ MonoBehaviour:
   duration: 0.6
   moveEase: 7
   startScale: 1
-  endScale: 0.5
+  endScale: 0.3
   IsFlying: 0
 --- !u!1 &1914892899
 GameObject:
@@ -655,6 +700,7 @@ MonoBehaviour:
   progress: {fileID: 0}
   boardLine: {fileID: 0}
   score: {fileID: 1445713883}
+  timer: {fileID: 1485186233}
   State: 0
 --- !u!114 &1914892902
 MonoBehaviour:
@@ -786,3 +832,4 @@ SceneRoots:
   - {fileID: 1445713881}
   - {fileID: 1848427225}
   - {fileID: 1024913321}
+  - {fileID: 1485186232}

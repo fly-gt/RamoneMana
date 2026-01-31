@@ -124,7 +124,8 @@ public class SuccessFacade {
             var isLast = n == board.clickedNumbers[^1];
             var value = n.Number * Random.Range(6, 8);
             totalScore += value;
-            FlyShared.Instance.StarFly.Fly(n.transform.position, scoreRect.position, () => onCompleted(value, isLast));
+            var go = await FlyShared.Instance.StarFly.Fly(n.transform.position, scoreRect.position, () => onCompleted(value, isLast));
+            go.GetComponent<SpriteRenderer>().size = Vector2.one * GameController.Instance.board.sizeNumberSpriteRender;
             await UniTask.Delay(100);
         }
 

@@ -13,6 +13,7 @@ public class BoardController : MonoBehaviour {
     public List<NumberController> numbers = new();
     public List<NumberController> clickedNumbers = new();
     public BoardUnClickHandler unClickHandler;
+    public float sizeNumberSpriteRender;
 
     public event Action UnClick;
 
@@ -75,6 +76,7 @@ public class BoardController : MonoBehaviour {
         float itemSizeX = numberFieldSize.x / fieldSize.x;
         Vector2 itemSize = new Vector2(itemSizeX, itemSizeX);
         Vector3 pivotPosition = new(-numberFieldSize.x / 2, numberFieldSize.y / 2, 0);
+        sizeNumberSpriteRender = itemSizeX * transform.localScale.x;
 
         if (numbers.Count == 0) {
             for (int y = 0; y < fieldSize.y; y++) {

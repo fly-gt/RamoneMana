@@ -82,6 +82,7 @@ MonoBehaviour:
   moveEase: 15
   startScale: 0.6
   endScale: 1
+  IsFlying: 0
 --- !u!1 &1719558051376548443
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,8 +298,9 @@ MonoBehaviour:
   canvasGroup: {fileID: 5893413548688111212}
   wrongImage: {fileID: 160922707402336978}
   scoreText: {fileID: 2463650927712375445}
-  scoreView: {fileID: 8933703558441644715}
   flying: {fileID: 4413251922877063411}
+  scoreView: {fileID: 8933703558441644715}
+  timerView: {fileID: 6875715583933947536}
 --- !u!1 &2057382871381934368
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,6 +461,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9211251604856436532}
   - component: {fileID: 6016651892481176186}
+  - component: {fileID: 6875715583933947536}
   m_Layer: 5
   m_Name: Time
   m_TagString: Untagged
@@ -497,6 +500,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2909299172178398389}
   m_CullTransparentMesh: 1
+--- !u!114 &6875715583933947536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2909299172178398389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f56e6b1e8d27c442848e5e2c7e1aafc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TimerView
+  timerView: {fileID: 8288785713195761960}
 --- !u!1 &3088342578733771613
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,6 +22,7 @@ public class GameController : Singletone<GameController> {
     public BoardLine boardLine;
     [Space]
     public ScoreController score;
+    public TimerController timer;
     [Space]
     public ClickNumberFlow clickNumberFlow;
     [Space]
@@ -44,26 +45,30 @@ public class GameController : Singletone<GameController> {
 
         boardLine = await UtilityAdressables.InitializeObject<BoardLine>(boardLinePrefab);
 
-        ToMenu(true);
-
         clickNumberFlow = new(progress, board, score);
         score.Setup();
+        timer.Setup();
+
+        ToMenu(true);
     }
 
     public async void ToMenu(bool first = false) {
         State = GameStateType.Menu;
         enviroment.ToMenu(first);
         progress.ToGame(false);
+        boardLine.Clear();
 
         if (!first) {
             board.Hide();
         }
 
-        ScreenManager.Instance.Set<MenuScreen>();
+        await ScreenManager.Instance.Set<MenuScreen>();
+        timer.ResetTimer();
     }
 
     public void ToPause() {
         State = GameStateType.Pause;
+        timer.StopTimer();
         PopupManager.Instance.Render<PausePopup>();
     }
 
@@ -71,10 +76,11 @@ public class GameController : Singletone<GameController> {
         State = GameStateType.Game;
         TryFirstEnterByYG2();
         ScreenManager.Instance.Set<GameScreen>();
-        board.Show();
         enviroment.ToGame();
         progress.Generate();
         progress.ToGame(true);
+        await board.Show();
+        timer.StartTimer();
     }
 
     private Vector2 GetSizeByCamera() {

@@ -7,8 +7,9 @@ using UnityEngine.UI;
 public class GameScreen : ScreenBase {
     public Image wrongImage;
     public TMP_Text scoreText;
-    public ScoreView scoreView;
     public TextFlying flying;
+    public ScoreView scoreView;
+    public TimerView timerView;
 
     public void PauseClick() {
         if (FlyShared.Instance.StarFly.IsFlying) {

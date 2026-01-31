@@ -253,18 +253,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85a08bd93b5f8114fa5c30c60b2b9513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RootCompositionServices
-  audio:
-    m_AssetGUID: c14b90b6bf7454a48b7bcbc26e32396b
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 0
-  music:
-    m_AssetGUID: 7a84c19ccc7850f46b942e969af1160f
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 0
 --- !u!1 &465877472
 GameObject:
   m_ObjectHideFlags: 0

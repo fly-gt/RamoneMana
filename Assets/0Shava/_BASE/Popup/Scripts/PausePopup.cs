@@ -1,5 +1,3 @@
-using Cysharp.Threading.Tasks;
-
 public class PausePopup : BasePopup {
     public void MenuClick() {
         PopupManager.Instance.CloseAll();
@@ -8,6 +6,7 @@ public class PausePopup : BasePopup {
 
     public void ContinueClick() {
         GameController.Instance.State = GameStateType.Game;
+        GameController.Instance.timer.StartTimer();
         PopupManager.Instance.CloseAll();
     }
 }

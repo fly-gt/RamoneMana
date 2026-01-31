@@ -15,7 +15,7 @@ public class ObjectFlying : MonoBehaviour {
 
     public bool IsFlying;
 
-    public async void Fly(Vector3 startPos, Vector3 endPos, Action completed = null) {
+    public async UniTask<GameObject> Fly(Vector3 startPos, Vector3 endPos, Action completed = null) {
         IsFlying = true;
         GameObject gameObj = await pool.Get();
 
@@ -30,6 +30,11 @@ public class ObjectFlying : MonoBehaviour {
             completed.Invoke();
         });
 
+        CompleteAsync();
+        return gameObj;
+    }
+
+    private async void CompleteAsync() {
         await UniTask.Delay((int)(duration * 1000));
         Complete();
         IsFlying = false;
