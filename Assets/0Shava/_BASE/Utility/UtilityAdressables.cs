@@ -24,23 +24,30 @@ public class UtilityAdressables {
     public static async UniTask<T> InitializeObject<T>() where T : Component {
         var name = typeof(T).Name;
 
-        if (!AddressableIdExist(name)) {
-            return null;
-        }
+        var res = await InitializeObject<T>(name);
+        return res;
+    }
+
+    public static async UniTask<T> InitializeObject<T>(string key) {
+        var name = key;
+
+        //if (!AddressableIdExist(name)) {
+        //    return default;
+        //}
 
         var handle = Addressables.InstantiateAsync(name);
         await handle.Task;
 
         if (handle.Status != UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationStatus.Succeeded) {
             Debug.LogError($"Failed to instantiate {name}");
-            return null;
+            return default;
         }
 
         var newObj = handle.Result;
 
         if (!newObj.TryGetComponent(out T comp)) {
             Debug.LogError($"Failed to 'Get Component' {name}");
-            return null;
+            return default;
         }
 
         return comp;
@@ -48,9 +55,6 @@ public class UtilityAdressables {
 
     public static async UniTask<T> InitializeObject<T>(AssetReference assetReference, Transform parent = null) {
         var name = typeof(T).Name;
-        //if (!AddressableIdExist(name)) {
-        //    return default;
-        //}
 
         var handle = Addressables.InstantiateAsync(assetReference, parent: parent);
         await handle.Task;
